@@ -1,0 +1,844 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>NCERT Physical Geography — UPSC Chapter Tests</title>
+  <style>
+    :root {
+      --ink: #17243a;
+      --muted: #657087;
+      --paper: #ffffff;
+      --canvas: #f3f5f8;
+      --line: #dce1e9;
+      --navy: #153a63;
+      --navy-2: #0d2948;
+      --gold: #bd8126;
+      --blue-soft: #e9f1fa;
+      --green: #176945;
+      --green-soft: #e7f5ed;
+      --red: #a33535;
+      --red-soft: #faecec;
+      --amber: #8a5a12;
+      --amber-soft: #fff3d8;
+      --purple: #6d4a8e;
+      --purple-soft: #f0e9f7;
+      --shadow: 0 18px 45px rgba(25, 42, 68, .09);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--canvas);
+      font: 16px/1.55 Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    button:focus-visible, input:focus-visible, summary:focus-visible {
+      outline: 3px solid #5d9de0;
+      outline-offset: 3px;
+    }
+    [hidden] { display: none !important; }
+    .shell { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
+    .site-header {
+      color: #fff;
+      background: linear-gradient(125deg, var(--navy-2), var(--navy));
+      border-bottom: 4px solid var(--gold);
+    }
+    .site-header .shell { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 74px; }
+    .brand { display: flex; align-items: center; gap: 13px; }
+    .brand-mark {
+      display: grid; place-items: center; width: 42px; height: 42px;
+      color: var(--navy-2); background: #fff; border-radius: 50%;
+      font-family: Georgia, serif; font-weight: 700;
+    }
+    .brand strong { display: block; font-family: Georgia, serif; font-size: 18px; letter-spacing: .02em; }
+    .brand small { display: block; color: #d6e2f0; }
+    .header-actions { display: flex; gap: 8px; }
+    main { padding: 34px 0 70px; }
+    .card { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+    .eyebrow { margin: 0 0 8px; color: var(--gold); font-size: 13px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+    h1, h2, h3 { margin-top: 0; font-family: Georgia, "Times New Roman", serif; line-height: 1.2; }
+    h1 { margin-bottom: 15px; font-size: clamp(30px, 5vw, 52px); }
+    h2 { font-size: clamp(24px, 3vw, 34px); }
+    h3 { font-size: 21px; }
+    p { margin-top: 0; }
+    .muted { color: var(--muted); }
+    .btn {
+      min-height: 44px; padding: 10px 16px; border: 1px solid var(--line); border-radius: 10px;
+      color: var(--ink); background: #fff; font-weight: 750;
+    }
+    .btn:hover { background: #f6f8fb; }
+    .btn-primary { color: #fff; background: var(--navy); border-color: var(--navy); }
+    .btn-primary:hover { background: var(--navy-2); }
+    .btn-ghost { color: inherit; background: transparent; border-color: rgba(255,255,255,.3); }
+    .btn-ghost:hover { background: rgba(255,255,255,.1); }
+    .btn-danger { color: var(--red); border-color: #e7b9b9; }
+    .btn-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+    .intro { overflow: hidden; }
+    .intro-grid { display: grid; grid-template-columns: 1.35fr .65fr; }
+    .intro-copy { padding: clamp(28px, 5vw, 60px); }
+    .intro-side { padding: 34px; color: #fff; background: var(--navy); }
+    .intro-side h2 { font-size: 23px; }
+    .instruction-list { margin: 0; padding-left: 20px; }
+    .instruction-list li + li { margin-top: 11px; }
+    .meta-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 26px 0; }
+    .meta { padding: 15px; border: 1px solid var(--line); border-radius: 13px; background: #fafbfd; }
+    .meta strong { display: block; font-size: 23px; }
+    .meta span { color: var(--muted); font-size: 13px; }
+    .resume-note { margin: 18px 0 0; padding: 13px 15px; color: var(--amber); background: var(--amber-soft); border-radius: 10px; }
+    .dashboard-head { margin-bottom: 22px; padding: clamp(25px, 5vw, 48px); }
+    .dashboard-head h1 { max-width: 850px; }
+    .chapter-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+    .chapter-card { display: flex; flex-direction: column; min-height: 330px; padding: 25px; overflow: hidden; }
+    .chapter-card::before { content: ""; width: 58px; height: 5px; margin-bottom: 20px; border-radius: 99px; background: var(--chapter-accent, var(--gold)); }
+    .chapter-card h2 { margin-bottom: 9px; font-size: 27px; }
+    .chapter-card .chapter-number { color: var(--chapter-accent, var(--gold)); font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
+    .chapter-card .chapter-actions { margin-top: auto; padding-top: 20px; }
+    .chapter-status { margin: 14px 0 0; padding: 11px 13px; color: var(--muted); background: #f7f8fa; border-radius: 10px; font-size: 13px; }
+    .dashboard-note { margin-top: 20px; padding: 20px 24px; }
+
+    .test-layout { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 22px; align-items: start; }
+    .test-main { min-width: 0; }
+    .test-toolbar {
+      position: sticky; top: 0; z-index: 8; display: grid; grid-template-columns: auto 1fr auto; gap: 16px;
+      align-items: center; margin-bottom: 16px; padding: 13px 16px; box-shadow: 0 8px 25px rgba(25,42,68,.08);
+    }
+    .timer { min-width: 105px; color: var(--navy); font-weight: 850; font-variant-numeric: tabular-nums; }
+    .timer.warning { color: var(--amber); }
+    .timer.over { color: var(--red); }
+    .progress-wrap { min-width: 0; }
+    .progress-label { display: flex; justify-content: space-between; gap: 12px; color: var(--muted); font-size: 12px; }
+    .progress { height: 7px; margin-top: 5px; overflow: hidden; background: #e8ebf0; border-radius: 999px; }
+    .progress > span { display: block; height: 100%; background: var(--navy); border-radius: inherit; transition: width .2s ease; }
+    .question-card { padding: clamp(22px, 4vw, 38px); }
+    .question-head { display: flex; justify-content: space-between; align-items: start; gap: 20px; margin-bottom: 22px; }
+    .question-kicker { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge { display: inline-flex; align-items: center; min-height: 27px; padding: 3px 9px; border-radius: 999px; color: var(--navy); background: var(--blue-soft); font-size: 12px; font-weight: 800; }
+    .badge.pyq { color: #6e3d0d; background: #fff0cf; }
+    .q-number { color: var(--muted); white-space: nowrap; font-weight: 800; }
+    .question-stem { font-family: Georgia, "Times New Roman", serif; font-size: 19px; line-height: 1.55; }
+    .statements { margin: 12px 0; padding-left: 28px; }
+    .statements li + li { margin-top: 7px; }
+    .options { display: grid; gap: 11px; margin-top: 24px; }
+    .option {
+      display: grid; grid-template-columns: 22px 32px minmax(0, 1fr); gap: 11px; align-items: start;
+      padding: 14px 16px; border: 1px solid var(--line); border-radius: 12px; background: #fff;
+    }
+    .option:hover { border-color: #a9bfd8; background: #f9fbfd; }
+    .option:has(input:checked) { border-color: var(--navy); background: var(--blue-soft); box-shadow: inset 4px 0 var(--navy); }
+    .option input { width: 19px; height: 19px; margin: 3px 0 0; accent-color: var(--navy); }
+    .option-letter { font-weight: 800; }
+    .question-actions { display: flex; justify-content: space-between; gap: 12px; margin-top: 26px; padding-top: 21px; border-top: 1px solid var(--line); }
+    .review-toggle.active { color: var(--purple); background: var(--purple-soft); border-color: #c9b4dc; }
+    .palette { position: sticky; top: 88px; padding: 20px; }
+    .palette h2 { margin-bottom: 13px; font-size: 21px; }
+    .palette-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+    .palette-btn { aspect-ratio: 1; padding: 0; border: 1px solid var(--line); border-radius: 8px; color: var(--ink); background: #fff; font-weight: 800; }
+    .palette-btn.answered { color: var(--green); background: var(--green-soft); border-color: #a8d5bf; }
+    .palette-btn.review { color: var(--purple); background: var(--purple-soft); border-color: #c8b0dc; }
+    .palette-btn.current { color: #fff; background: var(--navy); border-color: var(--navy); box-shadow: 0 0 0 3px #cbd9e7; }
+    .legend { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 16px 0; color: var(--muted); font-size: 12px; }
+    .legend span::before { content: ""; display: inline-block; width: 9px; height: 9px; margin-right: 6px; border-radius: 3px; background: #fff; border: 1px solid var(--line); }
+    .legend .leg-a::before { background: var(--green-soft); border-color: #a8d5bf; }
+    .legend .leg-r::before { background: var(--purple-soft); border-color: #c8b0dc; }
+    .submit-btn { width: 100%; }
+
+    .results-head { padding: clamp(25px, 5vw, 48px); }
+    .score-layout { display: grid; grid-template-columns: auto 1fr; gap: 30px; align-items: center; }
+    .score-ring {
+      display: grid; place-items: center; width: 150px; height: 150px; border-radius: 50%;
+      color: #fff; background: var(--navy); border: 9px solid #d8e3ef; text-align: center;
+    }
+    .score-ring strong { display: block; font-family: Georgia, serif; font-size: 37px; line-height: 1; }
+    .score-ring span { font-size: 13px; color: #d8e3ef; }
+    .stat-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: 20px; }
+    .stat { padding: 13px; border: 1px solid var(--line); border-radius: 11px; background: #fafbfd; }
+    .stat strong { display: block; font-size: 21px; }
+    .stat span { color: var(--muted); font-size: 12px; }
+    .analysis-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
+    .analysis-card { padding: 24px; }
+    .analysis-card h2 { font-size: 23px; }
+    .topic-row { display: grid; grid-template-columns: minmax(120px, 1fr) 2fr auto; gap: 10px; align-items: center; margin-top: 11px; }
+    .topic-row small { color: var(--muted); }
+    .mini-track { height: 8px; overflow: hidden; background: #e9edf2; border-radius: 99px; }
+    .mini-track span { display: block; height: 100%; background: var(--navy); }
+    .review-section { margin-top: 28px; }
+    .review-section > h2 { margin-bottom: 15px; }
+    .review-item { margin-bottom: 12px; overflow: hidden; }
+    .review-item summary { display: flex; align-items: center; gap: 11px; padding: 17px 19px; list-style: none; cursor: pointer; font-weight: 800; }
+    .review-item summary::-webkit-details-marker { display: none; }
+    .review-item summary::after { content: "+"; margin-left: auto; font-size: 23px; }
+    .review-item[open] summary::after { content: "−"; }
+    .status-dot { flex: 0 0 auto; width: 12px; height: 12px; border-radius: 50%; background: var(--muted); }
+    .status-dot.correct { background: var(--green); }
+    .status-dot.wrong { background: var(--red); }
+    .review-body { padding: 0 19px 22px; border-top: 1px solid var(--line); }
+    .review-body .question-stem { margin-top: 18px; }
+    .answer-option { margin: 8px 0; padding: 12px 14px; border-radius: 9px; background: #f6f7f9; }
+    .answer-option.correct { color: var(--green); background: var(--green-soft); border-left: 4px solid var(--green); }
+    .answer-option.wrong { color: var(--red); background: var(--red-soft); border-left: 4px solid var(--red); }
+    .answer-option small { display: block; margin-top: 4px; color: inherit; opacity: .85; }
+    .explanation { margin-top: 18px; padding: 17px; border-radius: 12px; background: var(--blue-soft); }
+    .misconception { margin-top: 12px; padding: 13px 15px; color: var(--amber); background: var(--amber-soft); border-radius: 10px; }
+    .source-ref { margin-top: 12px; color: var(--muted); font-size: 13px; }
+    .diagram { margin: 18px 0 8px; padding: 12px; overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: #fff; }
+    .diagram svg { display: block; width: 100%; min-width: 520px; height: auto; }
+
+    .mains-card { position: relative; margin-top: 30px; padding: clamp(25px, 5vw, 46px); overflow: hidden; color: #fff; background: linear-gradient(135deg, var(--navy-2), var(--navy)); border: 0; }
+    .mains-card::after { content: "GS I"; position: absolute; right: 25px; bottom: -20px; color: rgba(255,255,255,.06); font-family: Georgia, serif; font-size: 110px; font-weight: 700; }
+    .mains-card h2 { position: relative; z-index: 1; max-width: 850px; }
+    .mains-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 13px; }
+    .mains-meta span { position: relative; z-index: 1; padding: 4px 9px; border: 1px solid rgba(255,255,255,.25); border-radius: 999px; font-size: 12px; }
+    .surprise-wrap { margin-top: 20px; text-align: center; }
+    .surprise-trigger { color: #513344; background: #ffe3ee; border-color: #efb8ce; box-shadow: 0 9px 24px rgba(114,58,84,.12); }
+    .love-card {
+      position: relative; max-width: 690px; margin: 20px auto 0; padding: 105px clamp(23px, 5vw, 52px) 38px;
+      overflow: hidden; color: #4a3040; background: linear-gradient(145deg, #fff8fb, #ffedf5);
+      border: 1px dashed #dca5bd; border-radius: 25px; box-shadow: 0 20px 55px rgba(99,51,75,.15);
+      transform-origin: top center; animation: open-note .55s ease both;
+    }
+    .love-card h2 { font-size: clamp(26px, 4vw, 36px); }
+    .love-card p { font: 18px/1.75 Georgia, "Times New Roman", serif; }
+    .love-sign { display: block; margin-top: 17px; font: italic 17px Georgia, serif; }
+    .love-art { width: 190px; height: 90px; margin: -82px auto 14px; }
+    .love-art svg { display: block; width: 100%; height: 100%; }
+    .love-card.love-ch1 { --love-accent:#dc6f62; --love-second:#d3a33d; background: linear-gradient(145deg,#fffaf4,#ffece7); border-color:#e7a198; }
+    .love-card.love-ch2 { --love-accent:#8e6bc0; --love-second:#ef88a8; color:#3f335b; background: linear-gradient(145deg,#fbf8ff,#f2eaff); border-color:#bda9dc; }
+    .love-card.love-ch3 { --love-accent:#c95e65; --love-second:#d99043; color:#553235; background: linear-gradient(145deg,#fff9f5,#ffe8dc); border-color:#dfa08c; }
+    .love-card.love-ch4 { --love-accent:#d56f9b; --love-second:#5aaeb6; color:#493544; background: linear-gradient(145deg,#fff7fb,#eafafb); border-color:#b4d8d9; }
+    .book-doodle { position: absolute; top: 24px; left: 50%; width: 112px; height: 62px; transform: translateX(-50%); }
+    .book-page { position: absolute; top: 0; width: 55px; height: 55px; background: #fffdf6; border: 2px solid #b66f91; box-shadow: 0 5px 10px rgba(90,46,66,.08); }
+    .book-page.left { left: 2px; border-radius: 9px 2px 4px 13px; transform: rotate(-5deg); }
+    .book-page.right { right: 2px; border-radius: 2px 9px 13px 4px; transform: rotate(5deg); }
+    .book-heart { position: absolute; z-index: 2; left: 47px; top: 30px; color: #d24f87; font-size: 21px; }
+    .doodle { position: absolute; color: #d16b98; font-size: 24px; }
+    .doodle.one { left: 32px; top: 35px; transform: rotate(-12deg); }
+    .doodle.two { right: 34px; top: 37px; color: #d59a35; transform: rotate(10deg); }
+    .doodle.three { left: 67px; bottom: 27px; color: #b987c8; font-size: 19px; }
+    .pencil-line { position: absolute; right: 55px; bottom: 36px; width: 76px; height: 4px; background: #d59a35; border-radius: 4px; transform: rotate(-8deg); opacity: .7; }
+    @keyframes open-note { from { opacity: 0; transform: translateY(-10px) scale(.97); } to { opacity: 1; transform: none; } }
+
+    dialog { width: min(520px, calc(100% - 30px)); padding: 0; border: 0; border-radius: 16px; box-shadow: 0 30px 80px rgba(0,0,0,.25); }
+    dialog::backdrop { background: rgba(13, 27, 44, .6); }
+    .dialog-body { padding: 26px; }
+    .dialog-actions { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 9px; margin-top: 22px; }
+    .history-list { max-height: 380px; overflow: auto; }
+    .history-row { display: grid; grid-template-columns: 1fr auto; gap: 12px; padding: 13px 0; border-bottom: 1px solid var(--line); }
+    .history-row:last-child { border-bottom: 0; }
+    .history-row strong { display: block; }
+    .history-row small { color: var(--muted); }
+    .empty { padding: 25px; color: var(--muted); text-align: center; border: 1px dashed var(--line); border-radius: 12px; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    #live-region { position: fixed; left: -10000px; }
+
+    @media (max-width: 850px) {
+      .intro-grid, .test-layout, .analysis-grid, .chapter-grid { grid-template-columns: 1fr; }
+      .intro-side { order: -1; }
+      .palette { position: static; }
+      .palette-grid { grid-template-columns: repeat(10, 1fr); }
+      .test-toolbar { grid-template-columns: 1fr auto; }
+      .progress-wrap { grid-column: 1 / -1; grid-row: 2; }
+    }
+    @media (max-width: 620px) {
+      .shell { width: min(100% - 20px, 1180px); }
+      .site-header .shell { min-height: 66px; }
+      .brand small { display: none; }
+      .header-actions .btn { padding-inline: 10px; }
+      main { padding-top: 18px; }
+      .intro-copy, .intro-side { padding: 24px; }
+      .meta-grid { grid-template-columns: 1fr; }
+      .question-card { padding: 20px; }
+      .question-head { display: block; }
+      .q-number { margin-top: 8px; }
+      .question-actions { flex-direction: column; }
+      .question-actions .btn { width: 100%; }
+      .palette-grid { grid-template-columns: repeat(5, 1fr); }
+      .score-layout { grid-template-columns: 1fr; text-align: center; }
+      .score-ring { margin: 0 auto; }
+      .stat-grid { grid-template-columns: 1fr 1fr; text-align: left; }
+      .topic-row { grid-template-columns: 1fr auto; }
+      .topic-row .mini-track { grid-column: 1 / -1; grid-row: 2; }
+      .review-item summary { align-items: flex-start; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .001ms !important; transition-duration: .001ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">G</span>
+        <div><strong>Geography Prelims Lab</strong><small>NCERT Chapters 1–4 · UPSC practice</small></div>
+      </div>
+      <div class="header-actions">
+        <button class="btn btn-ghost" id="history-open" type="button">Attempts</button>
+        <button class="btn btn-ghost" id="home-btn" type="button" hidden>Home</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section id="home-view" aria-labelledby="home-title">
+      <section class="card dashboard-head" id="app-fallback">
+        <p class="eyebrow">Interactive test</p>
+        <h1 id="home-title">Geography Prelims Lab</h1>
+        <p>This file viewer has not started the test. On iPhone or iPad, the Files, WhatsApp and Mail previews may block interactive HTML. Open the test through a web link in Safari or Chrome.</p>
+      </section>
+    </section>
+
+    <section id="test-view" hidden aria-label="Prelims test">
+      <div class="test-layout">
+        <div class="test-main">
+          <div class="card test-toolbar">
+            <div class="timer" id="timer" aria-label="Time remaining">24:00</div>
+            <div class="progress-wrap">
+              <div class="progress-label"><span id="answered-label">0 of 20 answered</span><span id="progress-percent">0%</span></div>
+              <div class="progress" role="progressbar" aria-label="Questions answered" aria-valuemin="0" aria-valuemax="20" aria-valuenow="0"><span id="progress-bar"></span></div>
+            </div>
+            <div id="current-position" aria-label="Current question">1 / 20</div>
+          </div>
+
+          <article class="card question-card" id="question-card" aria-live="polite"></article>
+        </div>
+
+        <aside class="card palette" aria-label="Question palette">
+          <h2>Question palette</h2>
+          <div class="palette-grid" id="palette-grid"></div>
+          <div class="legend">
+            <span>Not answered</span><span class="leg-a">Answered</span>
+            <span class="leg-r">For review</span><span>Current</span>
+          </div>
+          <button class="btn btn-primary submit-btn" id="submit-open" type="button">Submit test</button>
+        </aside>
+      </div>
+    </section>
+
+    <section id="results-view" hidden aria-labelledby="results-title"></section>
+  </main>
+
+  <dialog id="submit-dialog">
+    <div class="dialog-body">
+      <h2>Submit your test?</h2>
+      <p id="submit-summary"></p>
+      <p class="muted">After submission, answers cannot be changed. You will receive the full review and one Mains question.</p>
+      <div class="dialog-actions">
+        <button class="btn" id="submit-cancel" type="button">Keep reviewing</button>
+        <button class="btn btn-primary" id="submit-confirm" type="button">Submit now</button>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog id="history-dialog">
+    <div class="dialog-body">
+      <h2>Attempt history</h2>
+      <label for="history-filter"><strong>Show</strong></label>
+      <select class="btn" id="history-filter" style="margin:0 0 14px 8px"></select>
+      <div class="history-list" id="history-list"></div>
+      <div class="dialog-actions">
+        <button class="btn btn-danger" id="history-clear-chapter" type="button">Clear this chapter</button>
+        <button class="btn btn-danger" id="history-clear-all" type="button">Clear all history</button>
+        <button class="btn btn-primary" id="history-close" type="button">Close</button>
+      </div>
+    </div>
+  </dialog>
+
+  <div id="live-region" aria-live="polite"></div>
+
+  <script>
+    (() => {
+      "use strict";
+
+      const STORAGE_KEY = "ncert-geography-ch1-4:v2";
+      const LEGACY_KEY = "ncert-ch4-upsc-test:v1";
+      const LETTERS = ["A", "B", "C", "D"];
+
+      const Q = (id, provenance, topic, stem, options, answer, explanation, optionNotes, misconception, ref, diagram = "") => ({
+        id, provenance, topic, stem, options: options.map((text, i) => ({ id: String.fromCharCode(97 + i), text })), answer, explanation, optionNotes, misconception, ref, diagram
+      });
+
+      const NQ = (id, provenance, topic, stem, options, answer, explanation, misconception, ref, diagram = "") => Q(
+        id, provenance, topic, stem, options, answer, explanation,
+        options.map((text, i) => String.fromCharCode(97 + i) === answer
+          ? `Correct. ${explanation}`
+          : `This does not satisfy the question. The supported answer is “${options[answer.charCodeAt(0) - 97]}”.`),
+        misconception, ref, diagram
+      );
+
+      const ch1Questions = [
+        NQ("c1-pyq-2019-rs", "UPSC Prelims 2019 · PYQ", "Geographical Methods", `For the measurement/estimation of which of the following are satellite images/remote sensing data used?<ol class="statements"><li>Chlorophyll content in the vegetation of a specific location</li><li>Greenhouse gas emissions from rice paddies of a specific location</li><li>Land surface temperatures of a specific location</li></ol>Select the correct answer using the code given below.`, ["I only", "II and III only", "III only", "I, II and III"], "d", "Remote sensing can estimate vegetation chlorophyll through spectral response, infer emissions over rice-growing areas, and measure land-surface temperature from thermal data. All three applications are valid.", "Remote sensing is not limited to photographs; sensors record spectral and thermal information for quantitative estimation.", "NCERT, printed pp. 8–9 — Geoinformatics, Remote Sensing, GIS and GPS"),
+        NQ("c1-eratosthenes", "PYQ-patterned practice", "Nature of Geography", "Who coined the term ‘Geography’ and what do its Greek roots broadly mean?", ["Herodotus — study of regions", "Eratosthenes — description of the Earth", "Humboldt — measurement of land", "Ritter — history of places"], "b", "Eratosthenes coined the term Geography. It derives from geo, meaning Earth, and graphos, meaning description.", "Do not confuse the origin of the term with later scholars who developed systematic and regional approaches.", "NCERT, printed pp. 2–3 — What is Geography?"),
+        NQ("c1-what-where-why", "PYQ-patterned practice", "Spatial Attributes", `Consider the following geographical questions:<ol class="statements"><li>What features are present?</li><li>Where are they distributed?</li><li>Why do those spatial patterns occur?</li></ol>Which question chiefly turns an inventory into a scientific explanation?`, ["I only", "II only", "III only", "I and II only"], "c", "‘Why’ investigates causal relationships among features and processes. ‘What’ and ‘where’ identify and locate patterns, but explanation makes the enquiry analytical.", "UPSC often places descriptive facts beside a causal statement; distinguish identification from explanation.", "NCERT, printed p. 4 — Geography as a study of spatial attributes"),
+        NQ("c1-areal", "PYQ-patterned practice", "Areal Differentiation", "The expression ‘areal differentiation’ in geography most directly refers to:", ["differences in phenomena from place to place", "division of the Earth into equal grids", "measurement of height above sea level", "classification of rocks by age"], "a", "Areal differentiation is the study and explanation of variations in physical and cultural phenomena over space.", "It is about spatial variation, not merely drawing administrative or geometric boundaries.", "NCERT, printed p. 3 — Areal differentiation"),
+        NQ("c1-synthesis", "PYQ-patterned practice", "Integrating Discipline", `Statement I: Geography attempts spatial synthesis.<br><br>Statement II: History attempts temporal synthesis.<br><br>Which one of the following is correct?`, ["Both statements are correct", "Both statements are incorrect", "I is correct but II is incorrect", "I is incorrect but II is correct"], "a", "Geography integrates phenomena through space, while history integrates events through time. NCERT uses this contrast to explain geography’s synthetic character.", "Spatial and temporal synthesis complement each other; they are not rival definitions of the same discipline.", "NCERT, printed pp. 4–6 — Geography as an integrating discipline", "branches"),
+        NQ("c1-integrating", "PYQ-patterned practice", "Integrating Discipline", `Consider the following statements:<ol class="statements"><li>Geography draws data from both natural and social sciences.</li><li>It studies associations among phenomena in a spatial context.</li><li>It can be understood adequately without knowledge of related disciplines.</li></ol>How many statements are correct?`, ["Only one", "Only two", "All three", "None"], "b", "Statements I and II are correct. Geography is holistic and interdisciplinary, so statement III contradicts the chapter.", "The word ‘independent’ does not mean isolated; geography retains its identity while synthesising related knowledge.", "NCERT, printed pp. 3–5 — Geography and other disciplines"),
+        NQ("c1-approaches", "PYQ-patterned practice", "Approaches", `Consider the following pairs:<ol class="statements"><li>Systematic geography — Alexander von Humboldt</li><li>Regional geography — Karl Ritter</li><li>Systematic approach — one phenomenon studied across the world</li><li>Regional approach — many phenomena studied together within a region</li></ol>How many pairs are correctly matched?`, ["Only one", "Only two", "Only three", "All four"], "d", "All four pairs are correct. Humboldt is associated with the systematic approach and Ritter with the regional approach; their units of enquiry differ accordingly.", "Do not swap the scholars or confuse a worldwide study of one theme with a holistic study of one region.", "NCERT, printed p. 6 — Approaches to the study of geography"),
+        NQ("c1-physical-branches", "PYQ-patterned practice", "Branches of Geography", `Which of the following are branches of physical geography?<ol class="statements"><li>Geomorphology</li><li>Climatology</li><li>Hydrology</li><li>Soil geography</li></ol>`, ["I and II only", "I, II and III only", "II, III and IV only", "I, II, III and IV"], "d", "All four are core branches of physical geography, dealing respectively with landforms, climate, water and soils.", "A subject may interact with human activity and still remain a physical-geography branch.", "NCERT, printed pp. 6–7 — Branches based on the systematic approach", "branches"),
+        NQ("c1-human-branches", "PYQ-patterned practice", "Branches of Geography", `Consider the following pairs:<ol class="statements"><li>Demography — Population geography</li><li>Economics — Economic geography</li><li>Political science — Political geography</li><li>History — Historical geography</li></ol>How many pairs correctly show a sister discipline and a branch of geography?`, ["Only one", "Only two", "Only three", "All four"], "d", "Every pair correctly shows how geography interfaces with a social-science discipline while retaining a spatial perspective.", "The pairing tests disciplinary linkage, not whether the subjects are identical.", "NCERT, printed pp. 5–8 — Geography and its relation with other disciplines", "branches"),
+        NQ("c1-biogeography", "PYQ-patterned practice", "Biogeography", `Which of the following belong to biogeography?<ol class="statements"><li>Plant geography</li><li>Zoo geography</li><li>Ecology/Ecosystem</li><li>Environmental geography</li></ol>`, ["I and II only", "I, II and III only", "II and IV only", "I, II, III and IV"], "d", "NCERT places all four at the interface of physical and human geography under biogeography.", "Biogeography is broader than the distribution of plants and animals alone; ecological and environmental relationships are included.", "NCERT, printed p. 8 — Biogeography", "branches"),
+        NQ("c1-regional", "PYQ-patterned practice", "Regional Approach", `Consider the following classifications:<ol class="statements"><li>Macro, meso and micro regional studies</li><li>Country/rural and town/urban planning</li><li>Regional development</li><li>Regional analysis</li></ol>How many are included in the regional approach?`, ["Only one", "Only two", "Only three", "All four"], "d", "All four appear in NCERT’s classification of geography based on the regional approach.", "Regional geography includes analysis, development and planning, not merely descriptive area studies.", "NCERT, printed p. 8 — Branches based on regional approach", "branches"),
+        NQ("c1-methods", "PYQ-patterned practice", "Geographical Methods", `Which of the following are identified as geographical methods and techniques?<ol class="statements"><li>Cartography</li><li>Quantitative techniques</li><li>Field survey</li><li>Geoinformatics</li></ol>`, ["I and II only", "II and III only", "I, III and IV only", "I, II, III and IV"], "d", "All four are listed methods. Geoinformatics further includes tools such as Remote Sensing, GIS and GPS.", "Do not treat modern geoinformatics as a replacement for maps, statistics or fieldwork; they are complementary.", "NCERT, printed pp. 7–9 — Methods and techniques"),
+        NQ("c1-nature-human", "PYQ-patterned practice", "Human–Nature Interaction", `Statement I: Primitive societies were directly dependent on their immediate physical environment.<br><br>Statement II: Technology enabled humans to modify nature and also made human life increasingly shaped by created environments.<br><br>Which one of the following is correct?`, ["Both statements are correct and II describes a later stage", "Both are correct but unrelated", "I is correct but II is incorrect", "I is incorrect but II is correct"], "a", "Both statements describe stages in the evolving nature–human relationship, summarised by NCERT as humanised nature and naturalised human beings.", "Technology changes the relationship but does not make society independent of nature.", "NCERT, printed pp. 3–4 — Nature and human interaction"),
+        NQ("c1-physical-importance", "PYQ-patterned practice", "Importance of Physical Geography", "Which statement best explains the practical importance of physical geography?", ["It replaces economic and social analysis", "It explains natural resources and environmental processes that support human activity", "It studies only hazards unrelated to development", "It is confined to naming landforms"], "b", "Landforms, climate, water, soils and biosphere provide resources and constraints for human life; understanding their interactions supports planning and development.", "Physical geography is analytical and applied, not a catalogue of features.", "NCERT, printed p. 9 — Physical geography and its importance"),
+        NQ("c1-sustainability", "PYQ-patterned practice", "Physical Geography", `Statement I: Modern technology has accelerated resource use.<br><br>Statement II: Understanding the physical environment is essential for sustainable development.<br><br>Which one of the following is correct?`, ["Both are correct and II follows from the ecological imbalance noted in I", "Both are correct but unrelated", "I is correct but II is incorrect", "I is incorrect but II is correct"], "a", "Both statements reflect NCERT’s conclusion: intensified resource use can create ecological imbalance, making an integrated understanding of the physical environment essential for sustainability.", "Technological capacity does not remove ecological limits.", "NCERT, printed p. 9 — Physical geography and sustainable development")
+      ];
+
+      const ch2Questions = [
+        NQ("c2-pyq-2015-goldilocks", "UPSC Prelims 2015 · Adjacent PYQ", "Universe and Habitability", "The term ‘Goldilocks Zone’ is often seen in the news in the context of:", ["limits of habitable zone above Earth’s surface", "regions inside Earth where shale gas is available", "search for Earth-like planets in outer space", "search for meteorites containing precious metals"], "c", "The Goldilocks Zone is the orbital region around a star where conditions may permit liquid water, making it relevant to the search for Earth-like planets.", "‘Not too hot and not too cold’ refers to planetary habitability, not a zone within Earth.", "Chapter link: NCERT, printed pp. 13–15 — stars and formation of planets"),
+        NQ("c2-pyq-2017-universe", "UPSC Prelims 2017 · Adjacent PYQ", "Origin of the Universe", "The terms ‘Event Horizon’, ‘Singularity’, ‘String Theory’ and ‘Standard Model’ are sometimes seen in the news in the context of:", ["observation and understanding of the Universe", "study of solar and lunar eclipses", "placing satellites in Earth orbit", "origin and evolution of living organisms"], "a", "These terms belong to modern physics and cosmology used in observing and explaining the universe.", "Do not reduce all space-related terminology to satellites or eclipses.", "Chapter link: NCERT, printed pp. 13–14 — Big Bang and the expanding universe", "cosmos"),
+        NQ("c2-pyq-2023-space", "UPSC Prelims 2023 · Adjacent PYQ", "Star Formation", `Consider the following pairs:<ol class="statements"><li>Cepheids — giant clouds of dust and gas in space</li><li>Nebulae — stars which brighten and dim periodically</li><li>Pulsars — neutron stars formed when massive stars exhaust fuel and collapse</li></ol>How many pairs are correctly matched?`, ["Only one", "Only two", "All three", "None"], "a", "Only the pulsar pair is correct. Cepheids are pulsating variable stars, while nebulae are clouds of gas and dust.", "The first two descriptions have been deliberately interchanged.", "Chapter link: NCERT, printed p. 14 — galaxies, nebulae and star formation", "cosmos"),
+        NQ("c2-pyq-2024-stars", "UPSC Prelims 2024 · Adjacent PYQ", "Star Formation", `Statement I: Giant stars live much longer than dwarf stars.<br><br>Statement II: Compared to dwarf stars, giant stars have a greater rate of nuclear reactions.<br><br>Which one of the following is correct?`, ["Both are correct and II explains I", "Both are correct but II does not explain I", "I is correct but II is incorrect", "I is incorrect but II is correct"], "d", "Massive giant stars consume nuclear fuel at a much higher rate and therefore have shorter, not longer, lives. Statement II is correct while Statement I is incorrect.", "A larger fuel reserve does not ensure a longer life when the consumption rate is disproportionately faster.", "Chapter link: NCERT, printed p. 14 — formation and evolution of stars", "cosmos"),
+        NQ("c2-pyq-2025-oxygen", "UPSC Prelims 2025 · Adjacent PYQ", "Evolution of Atmosphere", `With reference to planet Earth, consider the following statements:<ol class="statements"><li>Rain forests produce more oxygen than oceans.</li><li>Marine phytoplankton and photosynthetic bacteria produce about 50% of the world’s oxygen.</li><li>Well-oxygenated surface water contains several folds higher oxygen than atmospheric air.</li></ol>Which statements are correct?`, ["I and II only", "II only", "I and III", "None"], "b", "Statement II alone is correct. Oceanic photosynthesis supplies roughly half of global oxygen; rain forests do not exceed the oceans, and water contains far less oxygen than air.", "Distinguish gross biological production from popular metaphors such as forests being the sole ‘lungs’ of Earth.", "Chapter link: NCERT, printed pp. 15–16 — photosynthesis and atmospheric oxygen"),
+        NQ("c2-nebular", "PYQ-patterned practice", "Early Theories", `Consider the following pairs:<ol class="statements"><li>Immanuel Kant — early nebular hypothesis</li><li>Laplace — revision of the nebular hypothesis</li><li>Otto Schmidt and Carl Weizsäcker — solar nebula of hydrogen, helium and dust</li></ol>How many pairs are correctly matched?`, ["Only one", "Only two", "All three", "None"], "c", "All three pairs follow the historical sequence described by NCERT.", "The later Schmidt–Weizsäcker revision retained a nebular setting but emphasised collision and accretion of particles.", "NCERT, printed p. 13 — Early theories"),
+        NQ("c2-bang-stages", "PYQ-patterned practice", "Big Bang", `Which sequence best represents NCERT’s account of the Big Bang?<ol class="statements"><li>Extremely small, dense and hot initial state</li><li>Rapid expansion</li><li>Formation of atoms as temperature fell</li><li>Later formation of stars and galaxies</li></ol>`, ["I–II–III–IV", "II–I–IV–III", "I–III–II–IV", "IV–III–II–I"], "a", "The universe expanded from a hot dense state; cooling allowed atomic matter to form, followed much later by stars and galaxies.", "Keep the physical sequence separate from the later formation of the solar system.", "NCERT, printed pp. 13–14 — Big Bang Theory", "cosmos"),
+        NQ("c2-hubble", "PYQ-patterned practice", "Expanding Universe", `Statement I: Hubble observed that galaxies are moving farther apart.<br><br>Statement II: The distance between galaxies increases as the universe expands.<br><br>Which one of the following is correct?`, ["Both are correct and II explains the observation in I", "Both are correct but unrelated", "I is correct but II is incorrect", "I is incorrect but II is correct"], "a", "Hubble’s evidence supports an expanding universe in which intergalactic distances increase.", "The galaxies are not simply expanding like dots themselves; the balloon analogy describes increasing separation.", "NCERT, printed p. 13 — Origin of the Universe"),
+        NQ("c2-lightyear", "PYQ-patterned practice", "Astronomical Distance", "A light-year is a measure of:", ["time taken by Earth to orbit the Sun", "distance travelled by light in one year", "brightness of a star over one year", "age of the Sun"], "b", "A light-year is a unit of distance, approximately 9.461 × 10¹² km, not a unit of time.", "The word ‘year’ tempts candidates toward time, but the definition is distance travelled at the speed of light.", "NCERT, printed p. 14 — Light year"),
+        NQ("c2-star-formation", "PYQ-patterned practice", "Star Formation", `Consider the following statements:<ol class="statements"><li>Initial density differences allowed matter to be drawn together by gravity.</li><li>Galaxies contain large numbers of stars.</li><li>Localised clumps within nebulae can develop into stars.</li></ol>How many statements are correct?`, ["Only one", "Only two", "All three", "None"], "c", "All three statements form NCERT’s account from density differences to galaxies, nebulae and stars.", "Do not treat galaxy, nebula and star as interchangeable scales.", "NCERT, printed p. 14 — The Star Formation", "cosmos"),
+        NQ("c2-planets", "PYQ-patterned practice", "Formation of Planets", `Arrange the stages of planet formation:<ol class="statements"><li>Planetesimals form by cohesion and collision.</li><li>A rotating disc of gas and dust develops around a young star.</li><li>Planetesimals accrete into fewer large bodies.</li></ol>`, ["II–I–III", "I–II–III", "II–III–I", "III–I–II"], "a", "A circumstellar disc forms first, small rounded planetesimals develop within it, and continued accretion produces planets.", "Accretion builds from small bodies to large ones, not the reverse.", "NCERT, printed pp. 14–15 — Formation of Planets", "cosmos"),
+        NQ("c2-differentiation", "PYQ-patterned practice", "Evolution of Earth", `During differentiation of the early Earth:<ol class="statements"><li>Denser materials sank towards the centre.</li><li>Lighter materials moved towards the surface.</li><li>Layers such as crust, mantle and core developed.</li></ol>`, ["I only", "I and II only", "II and III only", "I, II and III"], "d", "All three statements describe density-driven differentiation of the hot early Earth.", "Differentiation refers to internal segregation by density, not biological evolution.", "NCERT, printed p. 15 — Evolution of Lithosphere", "layers"),
+        NQ("c2-atmosphere", "PYQ-patterned practice", "Evolution of Atmosphere", `Which sequence correctly describes evolution of the present atmosphere?<ol class="statements"><li>Loss of the primordial hydrogen–helium atmosphere</li><li>Degassing from Earth’s interior</li><li>Modification by photosynthesis</li></ol>`, ["I–II–III", "II–I–III", "III–II–I", "I–III–II"], "a", "Solar winds stripped the primordial atmosphere; degassing supplied a secondary atmosphere; photosynthesis later increased oxygen.", "Degassing preceded the oxygen-rich atmosphere produced by living organisms.", "NCERT, printed pp. 15–16 — Evolution of Atmosphere and Hydrosphere"),
+        NQ("c2-oceans", "PYQ-patterned practice", "Evolution of Hydrosphere", `Consider the following statements:<ol class="statements"><li>Cooling caused atmospheric water vapour to condense.</li><li>Rainwater accumulated in depressions to form oceans.</li><li>Oceans formed within about 500 million years of Earth’s formation.</li></ol>How many statements are correct?`, ["Only one", "Only two", "All three", "None"], "c", "All three statements match the sequence and chronology given by NCERT.", "The oceans are nearly as old as Earth; they were not a recent addition.", "NCERT, printed pp. 15–16 — Evolution of Hydrosphere"),
+        NQ("c2-life", "PYQ-patterned practice", "Origin of Life", `Consider the following chronological statements:<ol class="statements"><li>Earth formed about 4.6 billion years ago.</li><li>Life began about 3.8 billion years ago.</li><li>Photosynthesis evolved roughly 2.5–3.0 billion years ago.</li><li>Oxygen began flooding the atmosphere about 2.0 billion years ago.</li></ol>How many are consistent with NCERT?`, ["Only one", "Only two", "Only three", "All four"], "d", "All four dates reproduce the broad chronology in the chapter.", "Separate the origin of life from the much later oxygenation of the atmosphere.", "NCERT, printed p. 16 — Origin of Life")
+      ];
+
+      const ch3Questions = [
+        NQ("c3-pyq-2024-volcano", "UPSC Prelims 2024 · PYQ", "Volcanic Products", `Consider the following:<ol class="statements"><li>Pyroclastic debris</li><li>Ash and dust</li><li>Nitrogen compounds</li><li>Sulphur compounds</li></ol>How many of the above are products of volcanic eruptions?`, ["Only one", "Only two", "Only three", "All four"], "d", "Volcanic eruptions release fragmented material such as pyroclasts, ash and dust, together with gases containing nitrogen and sulphur compounds. All four can be eruption products.", "Volcanic products include both solid ejecta and gases; do not count only visible material.", "NCERT, printed p. 23 — Volcanoes and volcanic products", "volcanoforms"),
+        NQ("c3-pyq-2026-tungurahua", "UPSC Prelims 2026 · Adjacent PYQ", "Volcanoes", "Tungurahua Volcano, declared a UNESCO Global Geopark in 2025, is situated in which country?", ["Ecuador", "Peru", "Bolivia", "Colombia"], "a", "Tungurahua is in Ecuador, within the volcanically active Andes associated with subduction along western South America.", "Current-affairs locations become easier when linked to the tectonic belt in which they occur.", "Chapter link: NCERT, printed pp. 23–24 — Volcanoes"),
+        NQ("c3-direct", "PYQ-patterned practice", "Sources of Information", `Which of the following are direct sources of information about Earth’s interior?<ol class="statements"><li>Rocks from mining</li><li>Deep drilling samples</li><li>Volcanic material</li><li>Seismic waves</li></ol>`, ["I and II only", "I, II and III only", "II, III and IV only", "I, II, III and IV"], "b", "Mining, drilling and volcanic material provide direct samples. Seismic waves are an indirect source interpreted from their behaviour.", "Direct evidence means actual material, not merely a highly informative measurement.", "NCERT, printed pp. 18–19 — Direct Sources"),
+        NQ("c3-indirect", "PYQ-patterned practice", "Sources of Information", `Consider the following indirect sources:<ol class="statements"><li>Gravity anomalies</li><li>Magnetic surveys</li><li>Meteoritic material</li><li>Seismic activity</li></ol>How many are used to infer Earth’s interior?`, ["Only one", "Only two", "Only three", "All four"], "d", "All four provide indirect evidence about composition, density or layering inside Earth.", "Meteorites are tangible, but they are not samples collected from Earth’s interior and are therefore indirect analogues.", "NCERT, printed p. 19 — Indirect Sources"),
+        NQ("c3-focus", "PYQ-patterned practice", "Earthquakes", `Consider the following pairs:<ol class="statements"><li>Focus — point inside Earth where energy is released</li><li>Epicentre — surface point nearest to the focus</li><li>Fault — sharp break in crustal rocks</li></ol>How many pairs are correctly matched?`, ["Only one", "Only two", "All three", "None"], "c", "All three definitions are correct. Waves originate at the focus and reach the surface first near the epicentre.", "The epicentre is not the origin inside Earth; it is the corresponding surface location.", "NCERT, printed p. 19 — Why does the earth shake?"),
+        NQ("c3-wave-types", "PYQ-patterned practice", "Earthquake Waves", `Statement I: Body waves originate at the focus and travel through Earth.<br><br>Statement II: Surface waves develop when body waves interact with surface rocks.<br><br>Which one of the following is correct?`, ["Both are correct and II describes the origin of surface waves", "Both are correct but unrelated", "I is correct but II is incorrect", "I is incorrect but II is correct"], "a", "Both statements correctly distinguish body waves from the more destructive surface waves generated at the surface.", "Surface waves do not travel through the whole interior like P and S body waves.", "NCERT, printed pp. 19–20 — Earthquake Waves"),
+        NQ("c3-ps", "PYQ-patterned practice", "Earthquake Waves", `Consider the following statements:<ol class="statements"><li>P-waves travel fastest and pass through solids, liquids and gases.</li><li>S-waves travel only through solids.</li><li>S-waves vibrate material perpendicular to their direction of propagation.</li></ol>How many statements are correct?`, ["Only one", "Only two", "All three", "None"], "c", "All three statements are correct and their contrasting behaviour reveals the physical state of Earth’s layers.", "The inability of S-waves to cross liquids is central to evidence for a liquid outer core.", "NCERT, printed p. 20 — P-waves and S-waves", "shadow"),
+        NQ("c3-shadow", "PYQ-patterned practice", "Shadow Zones", `Which statement correctly describes seismic shadow zones?`, ["Both P and S waves are absent everywhere beyond 105°", "S-waves are absent beyond 105°, while P-waves reappear beyond about 145°", "P-waves stop at 105° and never reappear", "S-waves reappear beyond 145° but P-waves do not"], "b", "S-waves are not received beyond about 105° because they cannot cross the liquid outer core. P-waves are absent roughly between 105° and 145° but reappear after refraction.", "The P-wave and S-wave shadow zones differ in size and cause.", "NCERT, printed pp. 20–21 — Emergence of Shadow Zone", "shadow"),
+        NQ("c3-quake-types", "PYQ-patterned practice", "Earthquake Types", `Which of the following pairs are correctly matched?<ol class="statements"><li>Collapse earthquake — mining areas</li><li>Explosion earthquake — chemical or nuclear devices</li><li>Reservoir-induced earthquake — large reservoirs</li><li>Volcanic earthquake — active volcanic areas</li></ol>`, ["I and II only", "I, II and III only", "II, III and IV only", "I, II, III and IV"], "d", "All four pairs match the classification presented by NCERT.", "Tectonic earthquakes are most common, but the chapter also identifies several human-induced and volcanic types.", "NCERT, printed pp. 20–21 — Types of Earthquakes"),
+        NQ("c3-scales", "PYQ-patterned practice", "Measuring Earthquakes", `Statement I: Richter scale measures magnitude related to energy released.<br><br>Statement II: Mercalli scale measures intensity through visible effects and damage.<br><br>Which one of the following is correct?`, ["Both statements are correct", "Both statements are incorrect", "I is correct but II is incorrect", "I is incorrect but II is correct"], "a", "Richter magnitude and Mercalli intensity measure different aspects of an earthquake.", "Magnitude is a property of the event; intensity may vary from place to place with observed effects.", "NCERT, printed p. 21 — Measuring Earthquakes"),
+        NQ("c3-hazards", "PYQ-patterned practice", "Earthquake Effects", `Which of the following may be immediate earthquake hazards?<ol class="statements"><li>Ground shaking</li><li>Soil liquefaction</li><li>Landslides and avalanches</li><li>Tsunami</li></ol>`, ["I and II only", "I, II and III only", "II, III and IV only", "I, II, III and IV"], "d", "All four are listed effects. A tsunami results when a sufficiently strong earthquake displaces the ocean floor.", "A tsunami is generated by displacement associated with the earthquake, not by ordinary wind waves.", "NCERT, printed p. 21 — Effects of Earthquake"),
+        NQ("c3-crust", "PYQ-patterned practice", "Structure of Earth", `Consider the following thicknesses:<ol class="statements"><li>Mean oceanic crust — about 5 km</li><li>Mean continental crust — about 30 km</li><li>Continental crust beneath the Himalayas — about 70 km</li></ol>How many are correctly matched?`, ["Only one", "Only two", "All three", "None"], "c", "All three figures are given by NCERT and show that continental crust is generally thicker than oceanic crust.", "Do not use a single uniform crustal thickness for all settings.", "NCERT, printed p. 22 — The Crust", "layers"),
+        NQ("c3-mantle", "PYQ-patterned practice", "Structure of Earth", `Consider the following statements:<ol class="statements"><li>The mantle extends to about 2,900 km.</li><li>The asthenosphere is a weak zone in the upper mantle extending to roughly 400 km.</li><li>The lithosphere comprises crust and the uppermost solid mantle.</li></ol>How many statements are correct?`, ["Only one", "Only two", "All three", "None"], "c", "All three statements correctly distinguish mantle, asthenosphere and lithosphere.", "Lithosphere and crust are not synonyms; the lithosphere also includes uppermost mantle.", "NCERT, printed pp. 22–23 — The Mantle", "layers"),
+        NQ("c3-core", "PYQ-patterned practice", "Structure of Earth", `Which combination correctly describes the core?`, ["Outer core solid; inner core liquid; silica-rich", "Outer core liquid; inner core solid; chiefly nickel and iron", "Both layers liquid; magnesium-rich", "Both layers solid; aluminium-rich"], "b", "Seismic evidence indicates a liquid outer core and solid inner core composed mainly of nickel and iron, hence ‘nife’.", "The inner core remains solid under immense pressure despite very high temperature.", "NCERT, printed p. 23 — The Core", "layers"),
+        NQ("c3-shield", "PYQ-patterned practice", "Volcano Types", `Shield volcanoes are generally characterised by:`, ["highly viscous acidic lava and steep explosive cones", "fluid basaltic lava, broad gentle slopes and generally less explosive eruptions", "collapse of a magma chamber only", "exclusive occurrence on continents"], "b", "Low-viscosity basaltic lava travels far and builds broad shield volcanoes such as those of Hawaii.", "A cinder cone may occur on a shield volcano, but it does not define the overall shield form.", "NCERT, printed pp. 23–24 — Shield Volcanoes", "volcanoforms"),
+        NQ("c3-volcano-types", "PYQ-patterned practice", "Volcano Types", `Consider the following pairs:<ol class="statements"><li>Composite volcano — viscous lava and pyroclastic material</li><li>Caldera — collapse after highly explosive eruption</li><li>Flood basalt — extensive fluid lava flows</li><li>Mid-ocean ridge volcano — submarine ridge system</li></ol>How many pairs are correctly matched?`, ["Only one", "Only two", "Only three", "All four"], "d", "All four pairs accurately connect eruption style with landform.", "Flood-basalt provinces are extensive plateaus, not single steep cones.", "NCERT, printed p. 24 — Major types of volcanoes", "volcanoforms"),
+        NQ("c3-batholith", "PYQ-patterned practice", "Intrusive Forms", `Consider the following pairs:<ol class="statements"><li>Batholith — large deep-seated granitic body</li><li>Laccolith — dome-shaped body with a level base</li><li>Batholith — cooled portion of a magma chamber</li></ol>How many pairs are correctly matched?`, ["Only one", "Only two", "All three", "None"], "c", "All three descriptions are consistent with NCERT; batholiths may be exposed only after denudation.", "Laccoliths are intrusive domes, not surface volcanic cones.", "NCERT, printed p. 25 — Batholiths and Lacoliths", "volcanoforms"),
+        NQ("c3-folded-intrusions", "PYQ-patterned practice", "Intrusive Forms", `Which of the following are correctly matched?<ol class="statements"><li>Lapolith — saucer-shaped, concave upward body</li><li>Phacolith — wavy body near folds</li><li>Sill — near-horizontal intrusive body</li></ol>`, ["I only", "I and II only", "II and III only", "I, II and III"], "d", "All three pairs are correct. Thin horizontal intrusions are sheets; thicker ones are called sills.", "Shape and relation to surrounding strata distinguish intrusive forms.", "NCERT, printed p. 25 — Lapolith, Phacolith and Sills", "volcanoforms"),
+        NQ("c3-dykes", "PYQ-patterned practice", "Intrusive Forms", `Statement I: Dykes form when magma solidifies in near-vertical cracks.<br><br>Statement II: Dykes are common in western Maharashtra and are regarded as feeders of Deccan Trap eruptions.<br><br>Which one of the following is correct?`, ["Both are correct and II gives an example of I", "Both are correct but unrelated", "I is correct but II is incorrect", "I is incorrect but II is correct"], "a", "Both statements are correct; dykes cut across layers and the Maharashtra examples fed extensive basaltic eruptions.", "Do not confuse vertical dykes with horizontal sills.", "NCERT, printed p. 25 — Dykes", "volcanoforms"),
+        NQ("c3-density", "PYQ-patterned practice", "Earth’s Interior", `From the surface towards Earth’s centre, which broad trend is correct?`, ["Density and pressure generally decrease", "Density and pressure generally increase", "Density increases but pressure decreases", "Neither changes with depth"], "b", "Temperature, pressure and density generally increase with depth; their rates of change help infer internal conditions.", "No direct journey to the centre is required for these trends to be estimated from physical evidence.", "NCERT, printed p. 19 — Indirect Sources", "layers")
+      ];
+
+      const ch4Questions = [
+        Q("pyq-2025-drift", "UPSC Prelims 2025 · PYQ", "Continental Drift",
+          `Which of the following are the evidences of the phenomenon of continental drift?
+          <ol class="statements"><li>The belt of ancient rocks from the Brazil coast matches with those from Western Africa.</li><li>The gold deposits of Ghana are derived from the Brazil plateau when the two continents lay side by side.</li><li>The Gondwana system of sediments from India is known to have its counterparts in six different landmasses of the Southern Hemisphere.</li></ol>
+          Select the correct answer using the code given below.`,
+          ["I and III only", "I and II only", "I, II and III", "II and III only"], "c",
+          "All three statements reproduce evidence used for continental drift: matching rock belts, displaced placer gold, and correlated Gondwana tillite/sediment sequences across southern landmasses.",
+          ["Incomplete: it omits the Ghana–Brazil placer evidence.", "Incomplete: it omits the Gondwana sediment correlation.", "Correct: all three are independent lines of evidence.", "Incomplete: it omits the matching ancient rock belts."],
+          "Do not reduce continental-drift evidence to the visual fit of coastlines; geology, mineral deposits and palaeoclimate evidence are equally important.",
+          "NCERT, printed pp. 27–28 — Evidence in Support of the Continental Drift"),
+
+        Q("pyq-2024-volcano", "UPSC Prelims 2024 · Adjacent PYQ", "Earthquakes & Volcanoes",
+          `Consider the following:
+          <ol class="statements"><li>Pyroclastic debris</li><li>Ash and dust</li><li>Nitrogen compounds</li><li>Sulphur compounds</li></ol>
+          How many of the above are products of volcanic eruptions?`,
+          ["Only one", "Only two", "Only three", "All four"], "d",
+          "Volcanic eruptions release fragmented solid material such as pyroclasts, ash and dust, along with gases containing nitrogen and sulphur compounds. Therefore all four listed categories may occur as eruption products.",
+          ["Too narrow: eruptions produce more than one listed category.", "Still incomplete: both solid ejecta and multiple volcanic gases are involved.", "One listed product is unnecessarily excluded.", "Correct: all four may be associated with volcanic emissions."],
+          "The chapter maps where volcanoes occur; this adjacent PYQ extends that concept to what eruptions release.",
+          "Chapter link: NCERT, printed pp. 29–30 — Distribution of Earthquakes and Volcanoes"),
+
+        Q("pyq-2024-mountains", "UPSC Prelims 2024 · Adjacent PYQ", "Plate Tectonics",
+          `Consider the following information:
+          <ol class="statements"><li>Central Asia — Vosges — Fold mountain</li><li>Europe — Alps — Block mountain</li><li>North America — Appalachians — Fold mountain</li><li>South America — Andes — Fold mountain</li></ol>
+          In how many of the above rows is the given information correctly matched?`,
+          ["Only one", "Only two", "Only three", "All four"], "b",
+          "Rows III and IV are correct. The Appalachians and Andes are fold mountains. The Vosges are in Europe and are block mountains, while the Alps are fold mountains rather than block mountains.",
+          ["Too few: two rows are correctly matched.", "Correct: only the Appalachians and Andes rows are correct.", "Too many: the Vosges and Alps rows both contain errors.", "Incorrect: half of the rows are mismatched."],
+          "A mountain name may be familiar while its region or structural type is wrong; verify both parts of every row.",
+          "Chapter link: NCERT, printed pp. 32–33 — plates, boundaries and young fold mountains"),
+
+        Q("pyq-2026-peninsular", "UPSC Prelims 2026 · Adjacent PYQ", "Indian Plate",
+          `Which of the following geographical features or phenomena are associated with the Peninsular Block of India?
+          <ol class="statements"><li>Submergence of parts of the western coast due to tectonic activity</li><li>Presence of residual mountain ranges such as the Veliconda hills and Mahendragiri hills</li><li>Deep, V-shaped river valleys formed by fast-flowing rivers</li></ol>
+          Select the answer using the code given below.`,
+          ["I only", "I and II", "II and III", "III only"], "b",
+          "Statements I and II are associated with the Peninsular Block. Its old, stable relief includes residual hills, while parts of the western coast show submergence. Deep youthful V-shaped valleys are not its general fluvial signature.",
+          ["Incomplete: the residual ranges in statement II also belong.", "Correct: statements I and II are valid.", "Incorrect because statement III describes youthful, rapidly down-cutting terrain.", "Incorrect: statement III is the invalid statement."],
+          "Old and stable does not mean completely untouched by tectonic change; coastal submergence can coexist with ancient residual relief.",
+          "Chapter link: NCERT, printed p. 34 — Movement of the Indian Plate"),
+
+        Q("drift-evidence", "PYQ-patterned practice", "Continental Drift",
+          `Consider the following pairs of evidence and inference:
+          <ol class="statements"><li>Tillite across southern landmasses — shared glacial and palaeoclimatic history</li><li>Ghanaian placer gold without a local source rock — former proximity to the Brazil plateau</li><li>Mesosaurus remains in South Africa and Brazil — former continuity across the South Atlantic</li></ol>
+          How many pairs are correctly matched?`,
+          ["Only one", "Only two", "All three", "None"], "c",
+          "Every pair correctly links an observation to the inference used in support of continental drift. Together they represent palaeoclimate, mineral and fossil evidence.",
+          ["Too few: all three pairs are valid.", "Too few: no pair needs to be excluded.", "Correct: all three are accurately matched.", "Incorrect: each pair is explicitly supported by the chapter."],
+          "Different evidence types reinforce one another; do not treat tillite, placer deposits and fossils as interchangeable examples.",
+          "NCERT, printed p. 28 — Tillite, Placer Deposits and Distribution of Fossils"),
+
+        Q("wegener-forces", "PYQ-patterned practice", "Continental Drift",
+          `Consider the following statements about forces proposed by Wegener:
+          <ol class="statements"><li>Polar-fleeing force was related to Earth’s rotation and equatorial bulge.</li><li>Tidal force was attributed to the attraction of the Moon and the Sun.</li><li>Both forces were later considered adequate by most scholars.</li></ol>
+          How many statements are correct?`,
+          ["Only one", "Only two", "All three", "None"], "b",
+          "Statements I and II correctly describe Wegener’s proposed forces. Statement III is false because most scholars regarded those forces as wholly inadequate to drive continental movement.",
+          ["Too few: both I and II are correct.", "Correct: I and II only.", "Incorrect because statement III reverses the scholarly assessment.", "Incorrect: two statements are explicitly correct."],
+          "Remember both the proposal and its limitation: Wegener assembled strong evidence but lacked a convincing mechanism.",
+          "NCERT, printed p. 28 — Force for Drifting"),
+
+        Q("post-drift-not", "PYQ-patterned practice", "Sea-floor Spreading",
+          `Which one of the following was <strong>not</strong> a post-drift ocean-floor observation used in developing sea-floor spreading?`,
+          ["Volcanic activity along mid-oceanic ridges", "Symmetrical age and magnetic patterns on both sides of ridge crests", "Distribution of identical land fossils across continents", "Oceanic crust nowhere older than about 200 million years"], "c",
+          "Fossil distribution was part of the earlier continental evidence available to Wegener. Ridge volcanism, symmetrical magnetic/age patterns and the youth of oceanic crust came from later ocean-floor research.",
+          ["This was a key post-war ocean-floor observation.", "This symmetry strongly supported creation of new crust at ridges.", "Correct: this is continental-drift evidence, not a new ocean-floor observation.", "The unexpectedly young crust was central to the new explanation."],
+          "Watch the word ‘not’ and separate pre-war continental evidence from post-war ocean-floor discoveries.",
+          "NCERT, printed pp. 28–30 — Post-drift Studies and Sea Floor Spreading", "seafloor"),
+
+        Q("ocean-floor-divisions", "PYQ-patterned practice", "Ocean-floor Configuration",
+          `According to the chapter, the ocean floor is divided into which three major relief divisions?
+          <ol class="statements"><li>Continental margins</li><li>Deep-sea basins</li><li>Mid-oceanic ridges</li></ol>`,
+          ["I and II only", "II and III only", "I and III only", "I, II and III"], "d",
+          "The three major divisions are continental margins, deep-sea basins and mid-oceanic ridges. Features such as shelves, slopes, rises and trenches are components of continental margins.",
+          ["Incomplete: ridges are also a major division.", "Incomplete: continental margins are also included.", "Incomplete: deep-sea basins are missing.", "Correct: all three are the stated major divisions."],
+          "Do not promote every named feature to the same hierarchical level; shelves and trenches fall within continental margins.",
+          "NCERT, printed p. 29 — Ocean Floor Configuration"),
+
+        Q("abyssal-ridge", "PYQ-patterned practice", "Ocean-floor Configuration",
+          `Statement I: Abyssal plains lie between continental margins and mid-oceanic ridges and receive sediments moving beyond the margins.<br><br>
+          Statement II: Mid-oceanic ridges form an interconnected submerged mountain chain with an active central rift zone.<br><br>
+          Which one of the following is correct?`,
+          ["Both statements are correct", "Both statements are incorrect", "Statement I is correct, but Statement II is incorrect", "Statement I is incorrect, but Statement II is correct"], "a",
+          "Both statements accurately distinguish depositional abyssal plains from tectonically and volcanically active mid-oceanic ridges.",
+          ["Correct: both definitions follow the chapter.", "Incorrect: neither statement contains the proposed error.", "Incorrect: the ridge statement is also correct.", "Incorrect: the abyssal-plain statement is also correct."],
+          "Abyssal plains are depositional surfaces; ridge crests are zones of rifting and volcanism.",
+          "NCERT, printed p. 29 — Abyssal Plains and Mid-Oceanic Ridges"),
+
+        Q("hess-spreading", "PYQ-patterned practice", "Sea-floor Spreading",
+          `Consider the following statements regarding Hess’s sea-floor-spreading hypothesis:
+          <ol class="statements"><li>Lava erupts at ridge crests and creates new oceanic crust.</li><li>Oceanic crust becomes progressively older away from the ridge crest.</li><li>Old oceanic crust sinks and is consumed at deep-ocean trenches.</li></ol>
+          How many statements are correct?`,
+          ["Only one", "Only two", "All three", "None"], "c",
+          "All three statements form the basic creation–movement–consumption sequence of sea-floor spreading.",
+          ["Too few: the complete sequence has three correct parts.", "Too few: none of the statements is false.", "Correct: all three describe Hess’s hypothesis.", "Incorrect: all three are supported."],
+          "Sea-floor spreading is not only crust creation. Subduction at trenches explains why Earth does not continually expand.",
+          "NCERT, printed pp. 30–31 — Concept of Sea Floor Spreading", "seafloor"),
+
+        Q("plate-rates", "PYQ-patterned practice", "Plate Movement",
+          `Consider the following statements:
+          <ol class="statements"><li>Parallel strips of normal and reverse magnetic polarity help calculate plate-movement rates.</li><li>The Arctic Ridge has a rate below about 2.5 cm per year.</li><li>The East Pacific Rise near Easter Island has a rate above about 15 cm per year.</li></ol>
+          How many statements are correct?`,
+          ["Only one", "Only two", "All three", "None"], "c",
+          "All three are stated in the chapter. Magnetic stripes provide the record, while the Arctic Ridge and East Pacific Rise illustrate the slow and fast ends of observed movement.",
+          ["Too few: all three statements are correct.", "Too few: the numerical examples are both correct.", "Correct: all three agree with the text.", "Incorrect: none of the statements needs rejection."],
+          "Do not confuse the slow Arctic Ridge with the fast East Pacific Rise.",
+          "NCERT, printed p. 33 — Rates of Plate Movement"),
+
+        Q("plate-definition", "PYQ-patterned practice", "Plate Tectonics",
+          `With reference to a tectonic plate, consider the following statements:
+          <ol class="statements"><li>It is a rigid slab of lithosphere that may contain both continental and oceanic portions.</li><li>It moves horizontally over the asthenosphere as a unit.</li><li>Its name as continental or oceanic depends on which type occupies the larger portion.</li></ol>
+          Select the correct answer.`,
+          ["I only", "I and II only", "II and III only", "I, II and III"], "d",
+          "All three statements are part of the plate-tectonics definition given by NCERT. Plates, rather than isolated continents, are the moving units.",
+          ["Incomplete: II and III are also correct.", "Incomplete: classification by dominant portion is also correct.", "Incomplete: statement I is also correct.", "Correct: all three describe lithospheric plates."],
+          "A continental plate can include ocean floor, and an oceanic plate can include limited continental material.",
+          "NCERT, printed p. 32 — Plate Tectonics"),
+
+        Q("boundary-types", "PYQ-patterned practice", "Plate Boundaries",
+          `Consider the following pairs:
+          <ol class="statements"><li>Divergent boundary — new crust is produced</li><li>Convergent boundary — crust is consumed by subduction</li><li>Transform boundary — crust is neither produced nor destroyed</li></ol>
+          How many pairs are correctly matched?`,
+          ["Only one", "Only two", "All three", "None"], "c",
+          "All three pairs correctly express the diagnostic crustal behaviour at each boundary type.",
+          ["Too few: every pair is valid.", "Too few: transform behaviour is also correctly matched.", "Correct: all three are matched correctly.", "Incorrect: the full set is correct."],
+          "Classify boundaries by relative motion and whether crust is created, destroyed or conserved.",
+          "NCERT, printed p. 33 — Divergent, Convergent and Transform Boundaries", "boundaries"),
+
+        Q("convergence-types", "PYQ-patterned practice", "Plate Boundaries",
+          `Convergence can occur between which of the following?
+          <ol class="statements"><li>An oceanic and a continental plate</li><li>Two oceanic plates</li><li>Two continental plates</li></ol>`,
+          ["I only", "I and II only", "II and III only", "I, II and III"], "d",
+          "NCERT identifies all three combinations. Their surface expressions differ, but each represents plates moving toward one another.",
+          ["Incomplete: two-oceanic and two-continental convergence also occur.", "Incomplete: continent–continent convergence is omitted.", "Incomplete: ocean–continent convergence is omitted.", "Correct: all three combinations occur."],
+          "Convergent does not automatically mean ocean–continent; the Himalayas illustrate continent–continent convergence.",
+          "NCERT, printed p. 33 — Convergent Boundaries", "boundaries"),
+
+        Q("boundary-examples", "PYQ-patterned practice", "Plate Boundaries",
+          `Consider the following statements:
+          <ol class="statements"><li>The Mid-Atlantic Ridge is a divergent boundary.</li><li>The Himalayan boundary is a continent–continent convergence zone.</li><li>Transform faults commonly offset and run roughly perpendicular to mid-oceanic ridge segments.</li></ol>
+          How many statements are correct?`,
+          ["Only one", "Only two", "All three", "None"], "c",
+          "All three statements are correct and connect boundary definitions to the examples used by NCERT.",
+          ["Too few: all three examples are valid.", "Too few: no statement needs exclusion.", "Correct: the ridge, Himalaya and transform-fault statements are all correct.", "Incorrect: each statement is supported."],
+          "Transform faults do not create or consume crust even though they are commonly associated with ridge systems.",
+          "NCERT, printed pp. 33–34 — Plate Boundaries and Movement of the Indian Plate", "boundaries"),
+
+        Q("major-minor-plates", "PYQ-patterned practice", "Plate Tectonics",
+          `Consider the following classifications:
+          <ol class="statements"><li>Antarctic Plate — major plate</li><li>Pacific Plate — major plate</li><li>Cocos Plate — minor plate</li><li>Nazca Plate — minor plate</li></ol>
+          How many are correctly classified?`,
+          ["Only one", "Only two", "Only three", "All four"], "d",
+          "Antarctic and Pacific appear among the seven major plates, while Cocos and Nazca are listed as important minor plates.",
+          ["Too few: every classification is correct.", "Too few: both major and both minor examples are valid.", "Too few: no item is misclassified.", "Correct: all four classifications are accurate."],
+          "A physically large or familiar name is not the test; use the chapter’s stated major/minor classification.",
+          "NCERT, printed p. 32 — Major and Minor Plates"),
+
+        Q("convection-force", "PYQ-patterned practice", "Plate Movement",
+          `Statement I: Heat from radioactive decay and residual heat helps drive mantle convection.<br><br>
+          Statement II: Hot softened mantle rises, spreads, cools and sinks, producing a repeating convection cell.<br><br>
+          Which one of the following is correct?`,
+          ["Both statements are correct, and Statement II describes the process referred to in Statement I", "Both statements are correct, but Statement II is unrelated to Statement I", "Statement I is correct, but Statement II is incorrect", "Statement I is incorrect, but Statement II is correct"], "a",
+          "Both statements are correct. The heat sources in Statement I maintain the circular mantle movement described in Statement II, which NCERT presents as the driving force behind plate movement.",
+          ["Correct: the second statement explains the convective process enabled by internal heat.", "Incorrect: the two statements are directly related.", "Incorrect: the rise–cool–sink cycle is correct.", "Incorrect: the listed heat sources are also correct."],
+          "Wegener’s rejected forces and the later convection mechanism belong to different stages in the development of the theory.",
+          "NCERT, printed pp. 33–34 — Force for the Plate Movement", "boundaries"),
+
+        Q("india-chronology", "PYQ-patterned practice", "Indian Plate",
+          `Consider the following events in the movement of the Indian Plate:
+          <ol class="statements"><li>The Tethys Sea separated India from Asia until roughly 225 million years ago.</li><li>India began its northward journey about 200 million years ago.</li><li>Collision with Asia occurred roughly 40–50 million years ago.</li></ol>
+          How many statements are correct?`,
+          ["Only one", "Only two", "All three", "None"], "c",
+          "All three milestones and approximate dates are stated in the chapter and form the basic chronology of India’s northward movement and Himalayan uplift.",
+          ["Too few: each date is consistent with the text.", "Too few: no milestone is false.", "Correct: all three chronological statements are correct.", "Incorrect: the complete sequence is supported."],
+          "Keep the sequence distinct: separation across Tethys, northward drift, collision, then continuing uplift.",
+          "NCERT, printed p. 34 — Movement of the Indian Plate", "india"),
+
+        Q("india-boundaries", "PYQ-patterned practice", "Indian Plate",
+          `Consider the following statements about the Indian Plate:
+          <ol class="statements"><li>Its northern boundary along the Himalayas is a continent–continent convergence zone.</li><li>Its eastern boundary extends through Myanmar toward the island arc along the Java Trench.</li><li>The boundary with the Antarctic Plate is marked by an approximately west–east oceanic ridge.</li></ol>
+          Select the correct answer.`,
+          ["I only", "I and II only", "II and III only", "I, II and III"], "d",
+          "All three statements describe different segments of the Indian Plate boundary as set out by NCERT.",
+          ["Incomplete: the eastern and southern boundary statements are also correct.", "Incomplete: the India–Antarctic ridge statement is also correct.", "Incomplete: the Himalayan convergence statement is also correct.", "Correct: all three boundary descriptions are valid."],
+          "The Indian Plate is bounded by different boundary types; do not describe its entire perimeter as convergent.",
+          "NCERT, printed p. 34 — Movement of the Indian Plate", "india"),
+
+        Q("quake-volcano-pattern", "PYQ-patterned practice", "Earthquakes & Volcanoes",
+          `Consider the following statements regarding global seismic and volcanic patterns:
+          <ol class="statements"><li>Shallow-focus earthquakes characterise many mid-oceanic ridge zones.</li><li>Deep-seated earthquakes occur along the Pacific rim and the Alpine–Himalayan belt.</li><li>The Pacific rim is called the Ring of Fire because of its active volcanoes.</li></ol>
+          How many statements are correct?`,
+          ["Only one", "Only two", "All three", "None"], "c",
+          "All three statements match the distribution described in the chapter. The contrast in focal depth also reflects different tectonic settings.",
+          ["Too few: all three observations are correct.", "Too few: no statement needs rejection.", "Correct: all three describe the mapped pattern.", "Incorrect: each statement is supported by the chapter."],
+          "Earthquake depth matters: ridge earthquakes are generally shallow, while subduction-related belts can produce deep foci.",
+          "NCERT, printed pp. 29–30 — Distribution of Earthquakes and Volcanoes", "boundaries")
+      ];
+
+      const ch4Extra = NQ("c4-cycle-balance", "PYQ-patterned practice", "Plate Tectonics", `Statement I: Creation of oceanic crust at ridges is balanced by its consumption at trenches.<br><br>Statement II: This balance explains why sea-floor spreading does not continuously enlarge Earth.<br><br>Which one of the following is correct?`, ["Both are correct and II explains I", "Both are correct but unrelated", "I is correct but II is incorrect", "I is incorrect but II is correct"], "a", "New lithosphere forms at divergent ridges while old oceanic lithosphere is consumed at convergent margins; this global cycle prevents continuous expansion.", "Sea-floor spreading requires both creation and recycling of crust.", "NCERT, printed pp. 30–33 — Sea-floor spreading and plate boundaries", "seafloor");
+
+      const chapters = {
+        ch1: {
+          id:"ch1", number:1, title:"Geography as a Discipline", short:"How geography connects places, people, nature and methods.", accent:"#c87535", duration:18*60*1000, questions:ch1Questions,
+          mains:[
+            {id:"c1-m2015",label:"UPSC Mains GS III",year:2015,marks:12.5,words:200,text:"What do you understand by ‘Standard Positioning Systems’ and ‘Precision Positioning Systems’ in the GPS era? Discuss the advantages India perceives from its ambitious IRNSS programme employing just seven satellites."},
+            {id:"c1-m2018",label:"UPSC Mains GS I",year:2018,marks:10,words:150,text:"Why is Indian Regional Navigational Satellite System (IRNSS) needed? How does it help in navigation?"},
+            {id:"c1-m2025",label:"UPSC Mains GS I",year:2025,marks:15,words:250,text:"How can Artificial Intelligence (AI) and drones be effectively used along with GIS and RS techniques in locational and areal planning?"}
+          ],
+          love:{theme:"ch1",title:"Bubbaa",message:"I love how you keep trying to understand things instead of just giving up on them. Keep asking your questions, even the random ones, and keep finding your own way. You don’t have to get everything right at once. I’m here for the confused days, the small wins, and all the dreams you’re slowly making real. ❤️",sign:"Always cheering for you"}
+        },
+        ch2: {
+          id:"ch2", number:2, title:"The Origin and Evolution of the Earth", short:"From the expanding universe to Earth, atmosphere, oceans and life.", accent:"#7762a8", duration:18*60*1000, questions:ch2Questions,
+          mains:[{id:"c2-original",label:"NCERT-based Mains practice",year:"Practice",marks:10,words:150,text:"Explain the major stages in the origin and evolution of the Earth, including differentiation and the development of its atmosphere and hydrosphere."}],
+          love:{theme:"ch2",title:"Bachaa",message:"You don’t have to have everything figured out right now. Growth takes time, and it’s okay if some days feel slower than others. Just keep learning, keep showing up, and be a little patient with yourself. Whatever version of you today brings, I’m here—and I love you. ❤️",sign:"With you, one step at a time"}
+        },
+        ch3: {
+          id:"ch3", number:3, title:"Interior of the Earth", short:"Evidence from earthquakes, Earth’s layers, volcanoes and intrusive forms.", accent:"#b9584f", duration:24*60*1000, questions:ch3Questions,
+          mains:[
+            {id:"c3-m2015",label:"UPSC Mains GS III",year:2015,marks:12.5,words:200,text:"The frequency of earthquakes appears to have increased in the Indian subcontinent. However, India’s preparedness for mitigating their impact has significant gaps. Discuss various aspects."},
+            {id:"c3-m2017",label:"UPSC Mains GS III",year:2017,marks:15,words:250,text:"On December 2004, tsunami brought havoc on fourteen countries including India. Discuss the factors responsible for occurrence of tsunami and its effects on life and economy. In the light of NDMA guidelines, describe mechanisms for preparedness to reduce the risk during such events."},
+            {id:"c3-m2018",label:"UPSC Mains GS I",year:2018,marks:10,words:150,text:"Define mantle plume and explain its role in plate tectonics."},
+            {id:"c3-m2020",label:"UPSC Mains GS I",year:2020,marks:10,words:150,text:"Discuss the geophysical characteristics of Circum-Pacific Zone."},
+            {id:"c3-m2021-v",label:"UPSC Mains GS I",year:2021,marks:10,words:150,text:"Mention the global occurrence of volcanic eruptions in 2021 and their impact on regional environment."},
+            {id:"c3-m2021-e",label:"UPSC Mains GS III",year:2021,marks:10,words:150,text:"Discuss the vulnerability of India to earthquake-related hazards. Give examples including the salient features of major disasters caused by earthquakes in different parts of India during the last three decades."},
+            {id:"c3-m2022",label:"UPSC Mains GS I",year:2022,marks:10,words:150,text:"Discuss the natural resource potentials of Deccan Trap."},
+            {id:"c3-m2025",label:"UPSC Mains GS I",year:2025,marks:10,words:150,text:"What are Tsunamis? How and where are they formed? What are their consequences? Explain with examples."}
+          ],
+          love:{theme:"ch3",title:"Bubbaa",message:"I know you’re stronger than you give yourself credit for. Tough questions—and tough days—can shake you a little, but they don’t change what you’re capable of. Take your time, breathe, and keep going. And whenever you forget how good you are, I’ll be right here to remind you. ❤️",sign:"So proud of you"}
+        },
+        ch4: {
+          id:"ch4", number:4, title:"Distribution of Oceans and Continents", short:"Continental drift, sea-floor spreading, plates and the Indian Plate.", accent:"#2d6f86", duration:24*60*1000,
+          questions:ch4Questions.filter(q=>q.id!=="pyq-2024-volcano").concat(ch4Extra),
+          mains:[{id:"c4-m2025",label:"UPSC Mains GS I",year:2025,marks:15,words:250,text:"Discuss how the changes in shape and sizes of continents and ocean basins of the planet take place due to tectonic movements of the crustal masses."}],
+          love:{theme:"ch4",title:"Bachaa",message:"Things change, plans change, and sometimes we change too. That’s okay. You’re allowed to take a different route, learn as you go, and still be proud of how far you’ve come. Wherever life takes you, you won’t have to figure it all out alone. I’m right here with you. ❤️",sign:"Beside you, always"}
+        }
+      };
+
+      const diagrams = {
+        branches: `<div class="diagram"><svg viewBox="0 0 760 260" role="img"><title>Branches and approaches of geography</title><desc>Geography connects physical and human branches through systematic and regional approaches and shared methods.</desc><rect width="760" height="260" rx="14" fill="#f6f9fc"/><g font-family="system-ui" text-anchor="middle" fill="#17243a"><rect x="285" y="18" width="190" height="45" rx="12" fill="#153a63"/><text x="380" y="47" fill="white" font-weight="700">GEOGRAPHY</text><path d="M380 63V88M140 88H620M140 88V112M380 88V112M620 88V112" stroke="#7890a9" stroke-width="3"/><g fill="#e9f1fa" stroke="#9cb4ca"><rect x="45" y="112" width="190" height="55" rx="10"/><rect x="285" y="112" width="190" height="55" rx="10"/><rect x="525" y="112" width="190" height="55" rx="10"/></g><text x="140" y="136" font-weight="700">Physical</text><text x="140" y="156" font-size="12">land · climate · water · soil</text><text x="380" y="136" font-weight="700">Methods</text><text x="380" y="156" font-size="12">maps · fieldwork · GIS/GPS</text><text x="620" y="136" font-weight="700">Human</text><text x="620" y="156" font-size="12">society · population · economy</text><path d="M140 167V198M620 167V198M140 198H620" stroke="#7890a9" stroke-width="3"/><rect x="250" y="198" width="260" height="43" rx="10" fill="#fff3d8" stroke="#d5ad62"/><text x="380" y="225" font-weight="700">Systematic ↔ Regional synthesis</text></g></svg></div>`,
+        cosmos: `<div class="diagram"><svg viewBox="0 0 760 230" role="img"><title>From Big Bang to planets</title><desc>A timeline moves from the Big Bang through galaxies, nebulae, stars, a rotating disc and planets.</desc><rect width="760" height="230" rx="14" fill="#101934"/><path d="M70 116H690" stroke="#a79bd5" stroke-width="4"/><g fill="#fff" font-family="system-ui" text-anchor="middle"><g fill="#f3b2cf"><circle cx="75" cy="116" r="23"/><circle cx="205" cy="116" r="17"/><circle cx="335" cy="116" r="15"/><circle cx="465" cy="116" r="13"/><circle cx="595" cy="116" r="11"/><circle cx="690" cy="116" r="9"/></g><text x="75" y="58">Big Bang</text><text x="205" y="180">galaxies</text><text x="335" y="58">nebulae</text><text x="465" y="180">stars</text><text x="595" y="58">dust-gas disc</text><text x="690" y="180">planets</text><g fill="#f7d66b"><circle cx="170" cy="45" r="3"/><circle cx="300" cy="195" r="3"/><circle cx="520" cy="44" r="3"/><circle cx="650" cy="205" r="3"/></g></g></svg></div>`,
+        layers: `<div class="diagram"><svg viewBox="0 0 700 280" role="img"><title>Layered interior of Earth</title><desc>A cutaway shows crust, mantle, liquid outer core and solid inner core.</desc><rect width="700" height="280" rx="14" fill="#f6f9fc"/><g transform="translate(210 140)"><circle r="112" fill="#c88756"/><circle r="78" fill="#d9a044"/><circle r="48" fill="#dd6d53"/><circle r="23" fill="#f1d074"/><path d="M0 0L112 -15A112 112 0 0 1 66 91Z" fill="#fff" opacity=".82"/></g><g font-family="system-ui" fill="#17243a"><path d="M315 43L480 40" stroke="#657087"/><text x="492" y="45">Crust</text><path d="M285 85L480 85" stroke="#657087"/><text x="492" y="90">Mantle to 2,900 km</text><path d="M258 128L480 130" stroke="#657087"/><text x="492" y="135">Liquid outer core</text><path d="M233 150L480 185" stroke="#657087"/><text x="492" y="190">Solid inner core</text><text x="350" y="250" text-anchor="middle" font-weight="700">Density and pressure increase inward</text></g></svg></div>`,
+        shadow: `<div class="diagram"><svg viewBox="0 0 720 280" role="img"><title>Seismic-wave shadow zones</title><desc>P waves refract through the core and reappear beyond 145 degrees, while S waves do not pass through the liquid outer core.</desc><rect width="720" height="280" rx="14" fill="#f6f9fc"/><circle cx="260" cy="140" r="112" fill="#d9b17b" stroke="#795a37" stroke-width="3"/><circle cx="260" cy="140" r="53" fill="#d86e59"/><path d="M260 28Q395 104 348 221M260 28Q125 104 172 221" fill="none" stroke="#244f77" stroke-width="4"/><path d="M260 28L208 96M260 28L312 96" stroke="#a13f4d" stroke-width="4"/><g font-family="system-ui" fill="#17243a"><text x="260" y="20" text-anchor="middle">Epicentre</text><text x="260" y="145" text-anchor="middle" fill="white">liquid outer core</text><text x="474" y="105">P-wave shadow: 105°–145°</text><text x="474" y="143">S-waves absent beyond 105°</text><text x="474" y="181">P-waves reappear after refraction</text></g></svg></div>`,
+        volcanoforms: `<div class="diagram"><svg viewBox="0 0 760 250" role="img"><title>Volcanic and intrusive forms</title><desc>A landscape cross-section identifies a volcanic cone, batholith, laccolith, sill and dyke.</desc><rect width="760" height="250" rx="14" fill="#f6f9fc"/><path d="M0 130L160 125L250 55L345 128L760 135V250H0Z" fill="#d5c5a4" stroke="#785d3e" stroke-width="3"/><path d="M250 55L250 225" stroke="#bd5947" stroke-width="12"/><path d="M250 196Q345 140 430 196Q340 225 250 196" fill="#d9825a"/><path d="M455 182H680" stroke="#d9825a" stroke-width="16"/><path d="M585 105V225" stroke="#bd5947" stroke-width="13"/><path d="M55 230Q115 155 180 230" fill="#aa7254"/><g font-family="system-ui" fill="#17243a" font-size="14"><text x="245" y="35">volcanic cone</text><text x="75" y="218">batholith</text><text x="325" y="184">laccolith</text><text x="520" y="174">sill</text><text x="600" y="100">dyke</text></g></svg></div>`,
+        seafloor: `<div class="diagram"><svg viewBox="0 0 760 240" role="img" aria-labelledby="sf-title sf-desc"><title id="sf-title">Sea-floor spreading</title><desc id="sf-desc">New crust forms at a central ridge, moves symmetrically outward, ages away from the crest, and descends at trenches.</desc><rect width="760" height="240" rx="12" fill="#f6f9fc"/><path d="M0 156 C120 150 190 145 275 132 L345 85 L380 120 L415 85 L485 132 C570 145 640 150 760 156 L760 240 L0 240Z" fill="#b9c9d8"/><path d="M0 156 C120 150 190 145 275 132 L345 85 L380 120 L415 85 L485 132 C570 145 640 150 760 156" fill="none" stroke="#264e73" stroke-width="4"/><path d="M380 120 L380 202" stroke="#d65c4a" stroke-width="8"/><path d="M350 122 L270 122 M410 122 L490 122" stroke="#153a63" stroke-width="3" marker-end="url(#sf-arrow)"/><path d="M80 156 Q54 184 100 214 M680 156 Q706 184 660 214" fill="none" stroke="#8c4f34" stroke-width="5"/><g font-family="system-ui" font-size="14" fill="#17243a" text-anchor="middle"><text x="380" y="34">Mid-oceanic ridge</text><text x="380" y="55">youngest crust</text><text x="150" y="115">older</text><text x="610" y="115">older</text><text x="70" y="185">trench</text><text x="690" y="185">trench</text></g><defs><marker id="sf-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#153a63"/></marker></defs></svg></div>`,
+        boundaries: `<div class="diagram"><svg viewBox="0 0 780 250" role="img" aria-labelledby="bd-title bd-desc"><title id="bd-title">Three plate-boundary types</title><desc id="bd-desc">Divergent plates move apart and create crust, convergent plates move together and consume crust, and transform plates slide past while conserving crust.</desc><rect width="780" height="250" rx="12" fill="#f6f9fc"/><g font-family="system-ui" text-anchor="middle" fill="#17243a"><text x="130" y="30" font-size="17" font-weight="700">Divergent</text><text x="390" y="30" font-size="17" font-weight="700">Convergent</text><text x="650" y="30" font-size="17" font-weight="700">Transform</text><g stroke="#153a63" stroke-width="4" fill="#b9c9d8"><path d="M25 150 L110 128 L128 95 L146 128 L235 150 L235 208 L25 208Z"/><path d="M285 150 L405 138 L495 165 L495 208 L285 208Z"/><path d="M405 138 Q440 145 472 193" fill="none" stroke="#8c4f34"/><path d="M545 130 L640 130 L640 208 L545 208Z"/><path d="M660 145 L755 145 L755 208 L660 208Z"/></g><g stroke="#d65c4a" stroke-width="4" fill="none"><path d="M120 82 L65 82" marker-end="url(#bd-arr)"/><path d="M138 82 L193 82" marker-end="url(#bd-arr)"/><path d="M325 106 L375 106" marker-end="url(#bd-arr)"/><path d="M456 106 L406 106" marker-end="url(#bd-arr)"/><path d="M590 95 L590 55" marker-end="url(#bd-arr)"/><path d="M710 70 L710 110" marker-end="url(#bd-arr)"/></g><text x="130" y="232" font-size="13">crust created</text><text x="390" y="232" font-size="13">crust consumed</text><text x="650" y="232" font-size="13">crust conserved</text></g><defs><marker id="bd-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#d65c4a"/></marker></defs></svg></div>`,
+        india: `<div class="diagram"><svg viewBox="0 0 700 280" role="img" aria-labelledby="in-title in-desc"><title id="in-title">Northward movement of the Indian Plate</title><desc id="in-desc">A schematic timeline shows India moving north across the Tethys Sea, colliding with Eurasia, and uplifting the Himalayas.</desc><rect width="700" height="280" rx="12" fill="#f6f9fc"/><path d="M95 60 Q225 25 350 62 Q500 20 610 68 L610 105 Q480 83 350 112 Q225 78 95 110Z" fill="#c7d2bd" stroke="#48633f" stroke-width="3"/><text x="350" y="75" font-family="system-ui" font-size="18" text-anchor="middle" fill="#274020">EURASIAN PLATE</text><text x="350" y="132" font-family="system-ui" font-size="14" text-anchor="middle" fill="#44647e">Tethys Sea</text><path d="M302 220 L350 180 L398 220 L380 255 L320 255Z" fill="#d7b36d" stroke="#7f6229" stroke-width="3"/><text x="350" y="239" font-family="system-ui" font-size="16" text-anchor="middle" fill="#4d3713">INDIA</text><path d="M350 202 L350 148" stroke="#d65c4a" stroke-width="5" marker-end="url(#in-arrow)"/><path d="M282 104 L300 86 L318 104 L336 82 L354 104 L372 84 L390 104 L408 86 L426 104" fill="none" stroke="#8a5a12" stroke-width="4"/><g font-family="system-ui" font-size="13" fill="#17243a"><text x="440" y="98">Himalayan uplift after collision</text><text x="410" y="177">northward movement</text></g><defs><marker id="in-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#d65c4a"/></marker></defs></svg></div>`
+      };
+
+      function renderDiagram(name, suffix) {
+        const prefix = name === "seafloor" ? "sf-" : name === "boundaries" ? "bd-" : "in-";
+        return diagrams[name].replaceAll(prefix, `${prefix}${suffix}-`);
+      }
+
+
+      const $ = selector => document.querySelector(selector);
+      const chapterList = Object.values(chapters);
+      const homeView = $("#home-view");
+      const testView = $("#test-view");
+      const resultsView = $("#results-view");
+      const submitDialog = $("#submit-dialog");
+      const historyDialog = $("#history-dialog");
+      const live = $("#live-region");
+      let timerId = 0;
+      let mainsObserver = null;
+      let memoryOnly = false;
+
+      const emptyChapterState = () => ({attempt:null, history:[], mainsSeen:[], lastResult:null});
+      const freshStore = () => ({version:2, activeChapter:null, chapters:Object.fromEntries(chapterList.map(c=>[c.id,emptyChapterState()]))});
+      const shuffled = values => {
+        const result = [...values];
+        for (let i=result.length-1;i>0;i--) { const j=Math.floor(Math.random()*(i+1)); [result[i],result[j]]=[result[j],result[i]]; }
+        return result;
+      };
+      const cloneData = value => typeof structuredClone === "function" ? structuredClone(value) : JSON.parse(JSON.stringify(value));
+      const migrateAttempt = attempt => {
+        if (!attempt) return null;
+        const copy = cloneData(attempt);
+        const oldId = "pyq-2024-volcano";
+        copy.order = (copy.order || []).map(id=>id===oldId ? ch4Extra.id : id);
+        copy.answers ||= {}; delete copy.answers[oldId];
+        copy.review = (copy.review || []).filter(id=>id!==oldId);
+        copy.optionOrder ||= {}; delete copy.optionOrder[oldId];
+        copy.optionOrder[ch4Extra.id] ||= shuffled(ch4Extra.options.map(o=>o.id));
+        copy.current = Math.min(copy.current || 0, copy.order.length-1);
+        copy.warned ||= [];
+        return copy;
+      };
+      function loadStore() {
+        try {
+          const parsed = JSON.parse(localStorage.getItem(STORAGE_KEY));
+          if (parsed?.version===2) {
+            const base=freshStore();
+            base.activeChapter=parsed.activeChapter;
+            chapterList.forEach(c=>base.chapters[c.id]={...emptyChapterState(),...(parsed.chapters?.[c.id]||{})});
+            return base;
+          }
+          const legacy = JSON.parse(localStorage.getItem(LEGACY_KEY));
+          const base=freshStore();
+          if (legacy && typeof legacy==="object") {
+            base.activeChapter="ch4";
+            base.chapters.ch4={
+              attempt:migrateAttempt(legacy.attempt),
+              history:Array.isArray(legacy.history)?legacy.history.map(h=>({...h,chapterId:"ch4"})):[],
+              mainsSeen:[],
+              lastResult:legacy.lastResult?{...legacy.lastResult,chapterId:"ch4"}:null
+            };
+          }
+          return base;
+        } catch { memoryOnly=true; return freshStore(); }
+      }
+      let store=loadStore();
+      function save(){ if(memoryOnly)return; try{localStorage.setItem(STORAGE_KEY,JSON.stringify(store));}catch{memoryOnly=true;} }
+      const currentChapter = () => chapters[store.activeChapter] || null;
+      const currentState = () => store.activeChapter ? store.chapters[store.activeChapter] : null;
+      const allQuestions = [...ch1Questions,...ch2Questions,...ch3Questions,...ch4Questions,ch4Extra];
+      const getQuestion = id => allQuestions.find(q=>q.id===id);
+      const legacyMains = {
+        m2018:{id:"m2018",label:"UPSC Mains GS I",year:2018,marks:10,words:150,text:"Define mantle plume and explain its role in plate tectonics."},
+        m2020:{id:"m2020",label:"UPSC Mains GS I",year:2020,marks:10,words:150,text:"Discuss the geophysical characteristics of Circum-Pacific Zone."},
+        m2025:{id:"m2025",label:"UPSC Mains GS I",year:2025,marks:15,words:250,text:"Discuss how the changes in shape and sizes of continents and ocean basins of the planet take place due to tectonic movements of the crustal masses."}
+      };
+      const getMains = (chapter,id) => chapter.mains.find(m=>m.id===id) || legacyMains[id] || chapter.mains[0];
+      const announce = message => { live.textContent=""; requestAnimationFrame(()=>live.textContent=message); };
+      function showOnly(view){ [homeView,testView,resultsView].forEach(v=>v.hidden=v!==view); $("#home-btn").hidden=view===homeView; }
+      const formatElapsed = ms => { const s=Math.max(0,Math.floor(ms/1000)); return `${Math.floor(s/60)}m ${s%60}s`; };
+      const formatClock = ms => { const over=ms<0; const s=Math.floor(Math.abs(ms)/1000); return `${over?"+":""}${String(Math.floor(s/60)).padStart(2,"0")}:${String(s%60).padStart(2,"0")}`; };
+
+      function renderHome(){
+        clearInterval(timerId); mainsObserver?.disconnect(); store.activeChapter=null; save(); showOnly(homeView);
+        homeView.innerHTML=`<section class="card dashboard-head"><p class="eyebrow">NCERT Fundamentals of Physical Geography</p><h1 id="home-title">Four chapter-wise UPSC tests</h1><p class="muted">Choose any chapter. Each test keeps its own timer, saved attempt, history, detailed explanations, Mains prompt and a little note for Bubbaa.</p></section>
+          <div class="chapter-grid">${chapterList.map(c=>{const s=store.chapters[c.id],last=s.lastResult;return `<article class="card chapter-card" style="--chapter-accent:${c.accent}"><span class="chapter-number">Chapter ${c.number}</span><h2>${c.title}</h2><p class="muted">${c.short}</p><div class="meta-grid"><div class="meta"><strong>${c.questions.length}</strong><span>questions</span></div><div class="meta"><strong>${c.duration/60000} min</strong><span>soft timer</span></div><div class="meta"><strong>${c.questions.length*2}</strong><span>marks</span></div></div><div class="chapter-status">${s.attempt?"Unfinished attempt · timer continues":last?`Latest: <strong>${last.metrics.score.toFixed(2)} / ${c.questions.length*2}</strong> · ${s.history.length} completed`:"Ready for the first attempt"}</div><div class="btn-row chapter-actions"><button class="btn btn-primary" data-action="open" data-chapter="${c.id}">${s.attempt?"Resume test":"Start test"}</button>${s.attempt?`<button class="btn" data-action="restart" data-chapter="${c.id}">Restart</button>`:""}${last?`<button class="btn" data-action="result" data-chapter="${c.id}">Latest result</button>`:""}</div></article>`}).join("")}</div>
+          <section class="card dashboard-note"><strong>UPSC marking:</strong> +2 correct, −⅔ incorrect, 0 unattempted. The timer warns but never auto-submits.</section>`;
+      }
+      homeView.addEventListener("click",event=>{
+        const btn=event.target.closest("[data-action]"); if(!btn)return;
+        const id=btn.dataset.chapter; store.activeChapter=id; save();
+        if(btn.dataset.action==="restart"){ if(confirm("Discard this unfinished attempt and start again?")) newAttempt(id); else renderHome(); }
+        else if(btn.dataset.action==="result") renderResults(store.chapters[id].lastResult);
+        else store.chapters[id].attempt?renderTest():newAttempt(id);
+      });
+
+      function newAttempt(chapterId=store.activeChapter){
+        const c=chapters[chapterId]; store.activeChapter=chapterId;
+        const order=shuffled(c.questions.map(q=>q.id));
+        store.chapters[chapterId].attempt={order,optionOrder:Object.fromEntries(c.questions.map(q=>[q.id,shuffled(q.options.map(o=>o.id))])),answers:{},review:[],current:0,startedAt:Date.now(),warned:[]};
+        save(); renderTest();
+      }
+      function renderTest(){
+        const c=currentChapter(),s=currentState(); if(!c||!s?.attempt)return renderHome();
+        showOnly(testView); document.title=`Chapter ${c.number}: ${c.title} — UPSC Test`;
+        $(".progress").setAttribute("aria-valuemax",c.questions.length);
+        renderPalette(); renderQuestion(); startTimer();
+      }
+      function startTimer(){
+        clearInterval(timerId); const c=currentChapter(),a=currentState().attempt;
+        const tick=()=>{ const left=c.duration-(Date.now()-a.startedAt),el=$("#timer"); el.textContent=formatClock(left); el.className=`timer${left<=0?" over":left<=300000?" warning":""}`;
+          [[300000,"Five minutes remain."],[60000,"One minute remains."]].forEach(([limit,msg])=>{if(left<=limit&&!a.warned.includes(limit)){a.warned.push(limit);save();announce(msg);}}); };
+        tick(); timerId=setInterval(tick,1000);
+      }
+      function renderPalette(){ const a=currentState().attempt; $("#palette-grid").innerHTML=a.order.map((id,i)=>`<button class="palette-btn" data-index="${i}" type="button" aria-label="Question ${i+1}">${i+1}</button>`).join(""); $("#palette-grid").querySelectorAll("button").forEach(b=>b.addEventListener("click",()=>{a.current=+b.dataset.index;save();renderQuestion();})); }
+      function updateChrome(){
+        const c=currentChapter(),a=currentState().attempt,answered=Object.keys(a.answers).length,pct=Math.round(answered/c.questions.length*100);
+        $("#answered-label").textContent=`${answered} of ${c.questions.length} answered`; $("#progress-percent").textContent=`${pct}%`; $("#progress-bar").style.width=`${pct}%`; $(".progress").setAttribute("aria-valuenow",answered); $("#current-position").textContent=`${a.current+1} / ${c.questions.length}`;
+        $("#palette-grid").querySelectorAll("button").forEach((b,i)=>{const id=a.order[i];b.className=`palette-btn${a.answers[id]?" answered":""}${a.review.includes(id)?" review":""}${i===a.current?" current":""}`;b.setAttribute("aria-current",i===a.current?"true":"false");});
+      }
+      function renderQuestion(){
+        const c=currentChapter(),a=currentState().attempt,id=a.order[a.current],q=getQuestion(id),order=a.optionOrder[id];
+        $("#question-card").innerHTML=`<div class="question-head"><div><div class="question-kicker"><span class="badge ${q.provenance.includes("UPSC")?"pyq":""}">${q.provenance}</span><span class="badge">${q.topic}</span></div><div class="question-stem">${q.stem}</div></div><span class="q-number">Question ${a.current+1}</span></div><fieldset style="border:0;padding:0;margin:0"><legend class="sr-only">Choose one answer</legend><div class="options">${order.map((oid,i)=>{const o=q.options.find(x=>x.id===oid);return `<label class="option"><input type="radio" name="answer" value="${oid}" ${a.answers[id]===oid?"checked":""}><span class="option-letter">${LETTERS[i]}.</span><span>${o.text}</span></label>`}).join("")}</div></fieldset><div class="question-actions"><button class="btn review-toggle ${a.review.includes(id)?"active":""}" id="review-toggle" type="button">${a.review.includes(id)?"Marked for Review":"Mark for Review"}</button><div class="btn-row"><button class="btn" id="prev-q" type="button" ${a.current===0?"disabled":""}>Previous</button><button class="btn btn-primary" id="next-q" type="button" ${a.current===c.questions.length-1?"disabled":""}>Next</button></div></div>`;
+        $("#question-card").querySelectorAll("input").forEach(input=>input.addEventListener("change",()=>{a.answers[id]=input.value;save();updateChrome();}));
+        $("#review-toggle").addEventListener("click",()=>{a.review=a.review.includes(id)?a.review.filter(x=>x!==id):[...a.review,id];save();renderQuestion();});
+        $("#prev-q").addEventListener("click",()=>{if(a.current>0){a.current--;save();renderQuestion();}}); $("#next-q").addEventListener("click",()=>{if(a.current<c.questions.length-1){a.current++;save();renderQuestion();}}); updateChrome();
+      }
+
+      function openSubmit(){ const c=currentChapter(),a=currentState().attempt,answered=Object.keys(a.answers).length; $("#submit-summary").innerHTML=`You have answered <strong>${answered}</strong> of ${c.questions.length}. <strong>${c.questions.length-answered}</strong> remain unanswered and <strong>${a.review.length}</strong> are marked for review.`; submitDialog.showModal(); }
+      function calculate(attempt){let correct=0,wrong=0,skipped=0;attempt.order.forEach(id=>{const q=getQuestion(id),v=attempt.answers[id];if(!v)skipped++;else if(v===q.answer)correct++;else wrong++;});return{correct,wrong,skipped,score:correct*2-wrong*2/3,accuracy:correct+wrong?correct/(correct+wrong)*100:0};}
+      function chooseMains(c,s){if(s.mainsSeen.length>=c.mains.length)s.mainsSeen=[];const choice=shuffled(c.mains.filter(m=>!s.mainsSeen.includes(m.id)))[0]||c.mains[0];s.mainsSeen.push(choice.id);return choice.id;}
+      function submitTest(){
+        const c=currentChapter(),s=currentState(),completedAt=Date.now(),metrics=calculate(s.attempt);
+        const result={chapterId:c.id,attempt:cloneData(s.attempt),metrics,completedAt,elapsed:completedAt-s.attempt.startedAt,mainsId:chooseMains(c,s),mainsViewed:false,surpriseOpened:false};
+        s.history.unshift({chapterId:c.id,completedAt,elapsed:result.elapsed,...metrics});s.history=s.history.slice(0,20);s.lastResult=result;s.attempt=null;save();submitDialog.close();renderResults(result);
+      }
+      function topicBreakdown(result){const groups={};result.attempt.order.forEach(id=>{const q=getQuestion(id);groups[q.topic]||={correct:0,total:0};groups[q.topic].total++;if(result.attempt.answers[id]===q.answer)groups[q.topic].correct++;});return Object.entries(groups).sort((a,b)=>a[0].localeCompare(b[0]));}
+      function answerReview(result,id,number){const q=getQuestion(id),chosen=result.attempt.answers[id],status=!chosen?"skipped":chosen===q.answer?"correct":"wrong",order=result.attempt.optionOrder[id];return `<details class="card review-item"><summary><span class="status-dot ${status}"></span><span>Q${number}. ${q.topic}</span><span class="badge">${status==="skipped"?"Skipped":status==="correct"?"Correct":"Incorrect"}</span></summary><div class="review-body"><div class="question-kicker"><span class="badge ${q.provenance.includes("UPSC")?"pyq":""}">${q.provenance}</span></div><div class="question-stem">${q.stem}</div><div>${order.map((oid,i)=>{const o=q.options.find(x=>x.id===oid),cls=oid===q.answer?" correct":oid===chosen?" wrong":"",marks=[oid===q.answer?"Correct answer":"",oid===chosen?"Your answer":""].filter(Boolean).join(" · ");return `<div class="answer-option${cls}"><strong>${LETTERS[i]}. ${o.text}</strong>${marks?` — ${marks}`:""}<small>${q.optionNotes[q.options.findIndex(x=>x.id===oid)]}</small></div>`}).join("")}</div><div class="explanation"><strong>Explanation</strong><p>${q.explanation}</p></div>${q.diagram?renderDiagram(q.diagram,q.id):""}<div class="misconception"><strong>Exam trap:</strong> ${q.misconception}</div><div class="source-ref"><strong>Reference:</strong> ${q.ref}</div></div></details>`;}
+      function loveArt(theme){
+        const common=`fill="none" stroke="var(--love-accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"`;
+        if(theme==="ch1")return `<svg viewBox="0 0 190 90" aria-hidden="true"><path ${common} d="M28 68V18q34-8 64 8v52q-30-15-64-5zm134 0V18q-34-8-64 8v52q30-15 64-5M95 27v50"/><circle cx="45" cy="34" r="9" ${common}/><path ${common} d="M45 29v10m-5-5h10M122 43c12-17 26 2 0 22-26-20-12-39 0-22z"/><path d="M55 52q18-13 34 1" stroke="var(--love-second)" stroke-width="3" fill="none" stroke-dasharray="3 5"/></svg>`;
+        if(theme==="ch2")return `<svg viewBox="0 0 190 90" aria-hidden="true"><circle cx="95" cy="45" r="22" fill="var(--love-second)" opacity=".45"/><ellipse cx="95" cy="45" rx="66" ry="24" ${common} transform="rotate(-12 95 45)"/><circle cx="151" cy="27" r="5" fill="var(--love-accent)"/><path d="M47 20c7-10 16 2 0 13-16-11-7-23 0-13zM141 64c7-10 16 2 0 13-16-11-7-23 0-13z" fill="var(--love-accent)"/></svg>`;
+        if(theme==="ch3")return `<svg viewBox="0 0 190 90" aria-hidden="true"><path d="M28 74a67 67 0 01134 0" fill="#e7b982" stroke="var(--love-accent)" stroke-width="3"/><path d="M50 74a45 45 0 0190 0" fill="#d98668"/><path d="M72 74a23 23 0 0146 0" fill="#f5d27a"/><path d="M95 53c11-16 28 2 0 24-28-22-11-40 0-24z" fill="var(--love-accent)"/><path ${common} d="M25 30l8-8m-4 13l11-2m125-3l-8-8m4 13l-11-2"/></svg>`;
+        return `<svg viewBox="0 0 190 90" aria-hidden="true"><path d="M5 64q28-20 58 0t60 0t62 0" ${common}/><path d="M18 51q20-20 43-7l15 9m96-2q-20-20-43-7l-15 9" fill="var(--love-second)" opacity=".45"/><path d="M76 55l19 12 19-12-19-5z" fill="white" stroke="var(--love-accent)" stroke-width="2"/><path d="M45 29q50-24 100 0" stroke="var(--love-second)" stroke-width="3" fill="none" stroke-dasharray="3 6"/><path d="M95 18c9-13 22 2 0 19-22-17-9-32 0-19z" fill="var(--love-accent)"/></svg>`;
+      }
+      function renderResults(result=currentState()?.lastResult){
+        clearInterval(timerId);if(!result)return renderHome();store.activeChapter=result.chapterId||"ch4";save();const c=currentChapter(),s=currentState(),topics=topicBreakdown(result),weak=topics.filter(([,v])=>v.correct/v.total<.6).map(([n])=>n),m=getMains(c,result.mainsId),max=result.attempt.order.length*2;showOnly(resultsView);
+        resultsView.innerHTML=`<section class="card results-head"><p class="eyebrow">Chapter ${c.number} · Prelims submitted</p><div class="score-layout"><div class="score-ring"><div><strong>${result.metrics.score.toFixed(2)}</strong><span>out of ${max}</span></div></div><div><h1 id="results-title">${c.title}</h1><p class="muted">Completed in ${formatElapsed(result.elapsed)}. Accuracy uses attempted questions only.</p><div class="stat-grid"><div class="stat"><strong>${result.metrics.correct}</strong><span>correct</span></div><div class="stat"><strong>${result.metrics.wrong}</strong><span>incorrect</span></div><div class="stat"><strong>${result.metrics.skipped}</strong><span>unattempted</span></div><div class="stat"><strong>${result.metrics.accuracy.toFixed(1)}%</strong><span>accuracy</span></div></div></div></div><div class="btn-row" style="margin-top:22px"><button class="btn btn-primary" id="retake-btn">Fresh attempt</button><button class="btn" id="review-jump">Review answers</button><button class="btn" id="dashboard-btn">All chapters</button></div></section><div class="analysis-grid"><section class="card analysis-card"><h2>Topic performance</h2>${topics.map(([n,v])=>`<div class="topic-row"><span>${n}</span><div class="mini-track"><span style="width:${Math.round(v.correct/v.total*100)}%"></span></div><small>${v.correct}/${v.total}</small></div>`).join("")}</section><section class="card analysis-card"><h2>Where to revise</h2>${weak.length?`<p>Prioritise:</p><ul>${weak.map(n=>`<li>${n}</li>`).join("")}</ul>`:"<p>No topic is below 60%. Use the detailed review to refine individual misconceptions.</p>"}<p class="muted">Negative marking is included.</p></section></div><section class="review-section" id="answer-review"><h2>Complete answer review</h2>${result.attempt.order.map((id,i)=>answerReview(result,id,i+1)).join("")}</section><section class="card mains-card" id="mains-card" tabindex="-1"><p class="eyebrow" style="color:#f4c574">Unlocked after submission</p><div class="mains-meta"><span>${m.label} ${m.year}</span><span>${m.marks} marks</span><span>${m.words} words</span></div><h2>${m.text}</h2></section><div class="surprise-wrap"><button class="btn surprise-trigger" id="surprise-trigger" ${result.mainsViewed?"":"hidden"}>One more thing, Bubbaa… 💌</button><article class="love-card love-${c.love.theme}" id="love-card" ${result.surpriseOpened?"":"hidden"} aria-labelledby="love-title"><div class="love-art">${loveArt(c.love.theme)}</div><h2 id="love-title">${c.love.title}</h2><p>${c.love.message}</p><span class="love-sign">${c.love.sign}</span></article></div>`;
+        $("#retake-btn").addEventListener("click",()=>newAttempt(c.id));$("#review-jump").addEventListener("click",()=>$("#answer-review").scrollIntoView({behavior:"smooth"}));$("#dashboard-btn").addEventListener("click",renderHome);$("#surprise-trigger").addEventListener("click",()=>{result.surpriseOpened=true;s.lastResult=result;save();$("#love-card").hidden=false;$("#surprise-trigger").setAttribute("aria-expanded","true");$("#love-card").scrollIntoView({behavior:"smooth",block:"center"});});if(result.surpriseOpened)$("#surprise-trigger").setAttribute("aria-expanded","true");watchMains(result);
+      }
+      function watchMains(result){mainsObserver?.disconnect();if(result.mainsViewed)return;const card=$("#mains-card");mainsObserver=new IntersectionObserver(entries=>{if(!entries.some(e=>e.isIntersecting))return;result.mainsViewed=true;currentState().lastResult=result;save();$("#surprise-trigger").hidden=false;announce("A personal note is now available below the Mains question.");mainsObserver.disconnect();},{threshold:.45});mainsObserver.observe(card);}
+
+      function renderHistory(){
+        const filter=$("#history-filter").value||"all";let rows=[];chapterList.forEach(c=>{if(filter==="all"||filter===c.id)rows.push(...store.chapters[c.id].history.map(h=>({...h,chapterId:c.id})));});rows.sort((a,b)=>b.completedAt-a.completedAt);
+        $("#history-list").innerHTML=rows.length?rows.map(h=>{const c=chapters[h.chapterId];return `<div class="history-row"><div><strong>Chapter ${c.number}: ${c.title}</strong><small>${new Date(h.completedAt).toLocaleString("en-IN",{dateStyle:"medium",timeStyle:"short"})} · ${formatElapsed(h.elapsed)}</small></div><div><strong>${h.score.toFixed(2)} / ${c.questions.length*2}</strong><small>${h.accuracy.toFixed(1)}% accuracy</small></div></div>`}).join(""):`<div class="empty">No completed attempts here yet.</div>`;
+        $("#history-clear-chapter").hidden=filter==="all"||!store.chapters[filter].history.length;$("#history-clear-all").hidden=!chapterList.some(c=>store.chapters[c.id].history.length);
+      }
+      function openHistory(){const select=$("#history-filter");if(!select.options.length)select.innerHTML=`<option value="all">All chapters</option>${chapterList.map(c=>`<option value="${c.id}">Chapter ${c.number}</option>`).join("")}`;renderHistory();historyDialog.showModal();}
+
+      $("#home-btn").addEventListener("click",renderHome);$("#history-open").addEventListener("click",openHistory);$("#history-filter").addEventListener("change",renderHistory);$("#history-close").addEventListener("click",()=>historyDialog.close());$("#history-clear-chapter").addEventListener("click",()=>{const id=$("#history-filter").value;if(confirm(`Clear Chapter ${chapters[id].number} history?`)){store.chapters[id].history=[];save();renderHistory();}});$("#history-clear-all").addEventListener("click",()=>{if(confirm("Clear all chapter histories? This cannot be undone.")){chapterList.forEach(c=>store.chapters[c.id].history=[]);save();renderHistory();}});
+      $("#submit-open").addEventListener("click",openSubmit);$("#submit-cancel").addEventListener("click",()=>submitDialog.close());$("#submit-confirm").addEventListener("click",submitTest);submitDialog.addEventListener("cancel",e=>{e.preventDefault();submitDialog.close();});historyDialog.addEventListener("cancel",e=>{e.preventDefault();historyDialog.close();});
+      document.addEventListener("keydown",e=>{if(testView.hidden||e.target.matches("input,button,select"))return;const a=currentState()?.attempt;if(!a)return;if(e.key==="ArrowLeft"&&a.current>0){a.current--;save();renderQuestion();}if(e.key==="ArrowRight"&&a.current<a.order.length-1){a.current++;save();renderQuestion();}});
+      renderHome();
+    })();
+  </script>
+</body>
+</html>
